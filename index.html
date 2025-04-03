@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tổng Hợp Voucher Shopee [Cập nhật]</title> <!-- Nhớ cập nhật tiêu đề nếu muốn -->
-    <link rel="stylesheet" href="style.css">
+    <title>Tổng Hợp Voucher Shopee</title>
+    <link rel="stylesheet" href="style.css"> <!-- Đảm bảo file này tồn tại -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -16,7 +16,8 @@
         <header>
             <h1>Tổng Hợp Voucher Shopee</h1>
             <p class="subtitle">Mã giảm giá, freeship, hoàn xu, mã live, mã ngân hàng cập nhật</p>
-            <p class="last-updated">Cập nhật lần cuối: [GHI NGÀY BẠN CẬP NHẬT VÀO ĐÂY]</p>
+            <!-- Ngày giờ sẽ được cập nhật tự động bởi JavaScript -->
+            <p class="last-updated">Dữ liệu tải lúc: <span id="current-datetime">Đang tải...</span></p>
         </header>
 
         <main>
@@ -24,7 +25,6 @@
             <section id="freeship">
                 <h2><a href="https://shopee.vn/m/ma-giam-gia#fs" target="_blank">🚚 Mã FreeShip</a></h2>
 
-                <!-- Lấy từ Ví Voucher -->
                 <div class="voucher-item">
                     <div class="voucher-info">
                         <p><strong>Mô tả:</strong> Giảm 15K phí ship</p>
@@ -91,7 +91,7 @@
                         <a href="https://shopee.vn/live" target="_blank" class="shopee-link">Xem Live</a>
                     </div>
                 </div>
-                <!-- Thêm mã Freeship khác nếu có -->
+                <!-- [THÊM MÃ FREESHIP KHÁC TỪ DOC VÀO ĐÂY] -->
             </section>
 
             <!-- === MỤC HOÀN XU XTRA === -->
@@ -130,7 +130,7 @@
                         <a href="https://shopee.vn/m/hoan-xu-xtra" target="_blank" class="shopee-link">Lưu Mã Hoàn Xu</a>
                     </div>
                 </div>
-                <!-- Thêm các mã Hoàn Xu khác nếu có -->
+                <!-- [THÊM CÁC MÃ HOÀN XU KHÁC TỪ DOC VÀO ĐÂY] -->
             </section>
 
             <!-- === MỤC MÃ GIẢM GIÁ KHÁC === -->
@@ -161,7 +161,7 @@
                         <a href="https://shopee.vn/live" target="_blank" class="shopee-link">Xem Live Ngay</a>
                     </div>
                 </div>
-                <!-- Thêm mã Live khác -->
+                <!-- [THÊM MÃ LIVE KHÁC TỪ DOC VÀO ĐÂY] -->
 
                 <!-- Mã Người Dùng Mới -->
                 <h3 style="margin-top: 2rem;">✨ Mã cho Người Dùng Mới</h3>
@@ -172,8 +172,8 @@
                         <p><strong>Loại:</strong> Người dùng mới</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">SPPNEW30K</span> <!-- Kiểm tra lại mã này -->
-                        <button class="copy-btn" data-clipboard-text="SPPNEW30K">Sao chép</button>
+                        <span class="voucher-code">[NHẬP MÃ VÀO ĐÂY]</span> <!-- Ví dụ: SPPNEW30K -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ VÀO ĐÂY]">Sao chép</button>
                         <a href="https://shopee.vn/" target="_blank" class="shopee-link">Dùng Ngay</a>
                     </div>
                 </div>
@@ -184,12 +184,12 @@
                         <p><strong>Loại:</strong> Người dùng mới</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">SPPNEW50K</span> <!-- Kiểm tra lại mã này -->
-                        <button class="copy-btn" data-clipboard-text="SPPNEW50K">Sao chép</button>
+                         <span class="voucher-code">[NHẬP MÃ VÀO ĐÂY]</span> <!-- Ví dụ: SPPNEW50K -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ VÀO ĐÂY]">Sao chép</button>
                         <a href="https://shopee.vn/" target="_blank" class="shopee-link">Dùng Ngay</a>
                     </div>
                 </div>
-                <!-- Thêm mã người dùng mới khác -->
+                <!-- [THÊM MÃ NGƯỜI DÙNG MỚI KHÁC TỪ DOC VÀO ĐÂY] -->
 
                 <!-- Mã Thanh Toán -->
                 <h3 style="margin-top: 2rem;"><a href="https://shopee.vn/m/uu-dai-doi-tac" target="_blank">💳 Mã Thanh Toán (Ví ShopeePay, SPayLater, Ngân Hàng)</a></h3>
@@ -222,8 +222,8 @@
                         <p><strong>Loại:</strong> Ngân hàng VCB</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                         <span class="voucher-code">VCB[ngày]</span> <!-- Cần cập nhật -->
-                         <button class="copy-btn" data-clipboard-text="VCB[ngày]">Sao chép</button>
+                         <span class="voucher-code">[NHẬP MÃ VCB VÀO ĐÂY]</span> <!-- Cần cập nhật -->
+                         <button class="copy-btn" data-clipboard-text="[NHẬP MÃ VCB VÀO ĐÂY]">Sao chép</button>
                         <a href="https://shopee.vn/m/uu-dai-doi-tac" target="_blank" class="shopee-link">Chi tiết ưu đãi</a>
                     </div>
                 </div>
@@ -234,16 +234,15 @@
                         <p><strong>Loại:</strong> Ngân hàng TPBank</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                         <span class="voucher-code">TPB[ngày]</span> <!-- Cần cập nhật -->
-                         <button class="copy-btn" data-clipboard-text="TPB[ngày]">Sao chép</button>
+                         <span class="voucher-code">[NHẬP MÃ TPB VÀO ĐÂY]</span> <!-- Cần cập nhật -->
+                         <button class="copy-btn" data-clipboard-text="[NHẬP MÃ TPB VÀO ĐÂY]">Sao chép</button>
                          <a href="https://shopee.vn/m/uu-dai-doi-tac" target="_blank" class="shopee-link">Chi tiết ưu đãi</a>
                     </div>
                 </div>
-                <!-- Thêm các mã ngân hàng khác (VPB, BIDV, Eximbank, ZaloPay...) -->
                  <div class="voucher-item">
                     <div class="voucher-info">
-                        <p><strong>Mô tả:</strong> Giảm ...K (Thanh toán bằng ZaloPay)</p>
-                        <p><strong>Điều kiện:</strong> Đơn tối thiểu ...K </p>
+                        <p><strong>Mô tả:</strong> Giảm ...K (Thanh toán bằng ZaloPay)</p> <!-- Sửa lại -->
+                        <p><strong>Điều kiện:</strong> Đơn tối thiểu ...K </p> <!-- Sửa lại -->
                         <p><strong>Loại:</strong> ZaloPay</p>
                     </div>
                     <div class="voucher-code-wrapper">
@@ -251,6 +250,7 @@
                          <a href="https://shopee.vn/m/uu-dai-doi-tac" target="_blank" class="shopee-link">Chi tiết ưu đãi</a>
                     </div>
                 </div>
+                <!-- [THÊM CÁC MÃ THANH TOÁN KHÁC TỪ DOC VÀO ĐÂY: VPB, BIDV, ZaloPay,...] -->
 
 
                 <!-- Mã Theo Ngành Hàng -->
@@ -262,8 +262,8 @@
                         <p><strong>Loại:</strong> Điện tử</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">ELHA[ngày]10</span> <!-- Cần cập nhật -->
-                        <button class="copy-btn" data-clipboard-text="ELHA[ngày]10">Sao chép</button>
+                        <span class="voucher-code">[NHẬP MÃ ĐIỆN TỬ]</span> <!-- Cần cập nhật -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ ĐIỆN TỬ]">Sao chép</button>
                         <a href="https://shopee.vn/m/dien-tu-gia-soc" target="_blank" class="shopee-link">Đến trang Điện tử</a>
                     </div>
                 </div>
@@ -274,8 +274,8 @@
                         <p><strong>Loại:</strong> Thời trang</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">FASHION[ngày]</span> <!-- Cần cập nhật -->
-                        <button class="copy-btn" data-clipboard-text="FASHION[ngày]">Sao chép</button>
+                        <span class="voucher-code">[NHẬP MÃ THỜI TRANG]</span> <!-- Cần cập nhật -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ THỜI TRANG]">Sao chép</button>
                         <a href="https://shopee.vn/m/thoi-trang-shopee" target="_blank" class="shopee-link">Đến trang Thời trang</a>
                     </div>
                 </div>
@@ -286,8 +286,8 @@
                         <p><strong>Loại:</strong> Tiêu dùng (FMCG)</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">FMCG[ngày]12</span> <!-- Cần cập nhật -->
-                        <button class="copy-btn" data-clipboard-text="FMCG[ngày]12">Sao chép</button>
+                        <span class="voucher-code">[NHẬP MÃ TIÊU DÙNG]</span> <!-- Cần cập nhật -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ TIÊU DÙNG]">Sao chép</button>
                          <a href="https://shopee.vn/m/hang-tieu-dung-online" target="_blank" class="shopee-link">Đến trang Tiêu dùng</a>
                     </div>
                 </div>
@@ -298,28 +298,28 @@
                         <p><strong>Loại:</strong> Đời sống</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">LIFE[ngày]8</span> <!-- Cần cập nhật -->
-                        <button class="copy-btn" data-clipboard-text="LIFE[ngày]8">Sao chép</button>
+                        <span class="voucher-code">[NHẬP MÃ ĐỜI SỐNG]</span> <!-- Cần cập nhật -->
+                        <button class="copy-btn" data-clipboard-text="[NHẬP MÃ ĐỜI SỐNG]">Sao chép</button>
                         <a href="https://shopee.vn/m/nha-cua-doi-song" target="_blank" class="shopee-link">Đến trang Đời sống</a>
                     </div>
                 </div>
-                <!-- Thêm mã ngành hàng khác -->
+                <!-- [THÊM MÃ NGÀNH HÀNG KHÁC TỪ DOC VÀO ĐÂY] -->
 
                  <!-- Mã KOL / Đối tác -->
                 <h3 style="margin-top: 2rem;">📢 Mã KOL / Affiliates</h3>
                  <div class="voucher-item">
                     <div class="voucher-info">
-                        <p><strong>Mô tả:</strong> Giảm ...K (Từ KOL A)</p>
-                        <p><strong>Điều kiện:</strong> Đơn tối thiểu ...K</p>
+                        <p><strong>Mô tả:</strong> [MÔ TẢ MÃ KOL A]</p>
+                        <p><strong>Điều kiện:</strong> [ĐIỀU KIỆN MÃ KOL A]</p>
                         <p><strong>Loại:</strong> KOL/Affiliate</p>
                     </div>
                     <div class="voucher-code-wrapper">
-                        <span class="voucher-code">SPPKOLA</span> <!-- Mã ví dụ -->
-                        <button class="copy-btn" data-clipboard-text="SPPKOLA">Sao chép</button>
-                         <a href="#" target="_blank" class="shopee-link">Dùng Ngay</a> <!-- Thay # bằng link nếu có -->
+                        <span class="voucher-code">[MÃ KOL A]</span>
+                        <button class="copy-btn" data-clipboard-text="[MÃ KOL A]">Sao chép</button>
+                         <a href="[LINK DÙNG NGAY NẾU CÓ]" target="_blank" class="shopee-link">Dùng Ngay</a>
                     </div>
                 </div>
-                <!-- Thêm các mã KOL khác -->
+                <!-- [THÊM CÁC MÃ KOL KHÁC TỪ DOC VÀO ĐÂY] -->
 
                 <!-- Khung Giờ Săn Sale -->
                 <h3 style="margin-top: 2rem;">⏱️ Khung Giờ Săn Sale (Tham khảo)</h3>
@@ -342,11 +342,11 @@
         <footer>
             <p>Website tổng hợp voucher Shopee được cập nhật thủ công. Không phải trang chính thức của Shopee.</p>
             <p>Luôn kiểm tra lại điều kiện và hiệu lực mã trên ứng dụng Shopee trước khi sử dụng.</p>
-            <p>Xem/Chỉnh sửa nội dung gốc tại: <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Doc</a></p>
+            <p>Nguồn tham khảo: <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Doc</a></p>
             <!-- Thêm thông tin liên hệ hoặc credit nếu muốn -->
         </footer>
     </div>
 
-    <script src="script.js"></script> <!-- Đảm bảo file script.js tồn tại -->
+    <script src="script.js"></script> <!-- Đảm bảo gọi file script.js -->
 </body>
 </html>
