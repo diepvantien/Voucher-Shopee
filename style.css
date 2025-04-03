@@ -47,7 +47,11 @@ header h1 {
 .last-updated {
     font-size: 0.9rem;
     color: #adb5bd;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem; /* Tăng khoảng cách với dòng trên */
+}
+.last-updated span {
+    font-weight: 500;
+    color: #6c757d;
 }
 
 
@@ -79,6 +83,26 @@ section h2 a:hover {
     color: #0d6efd; /* Màu xanh dương khi hover */
 }
 
+section h3 {
+    font-size: 1.25rem;
+    color: #495057;
+    margin-top: 2.5rem; /* Khoảng cách trên cho tiêu đề phụ */
+    margin-bottom: 1rem;
+    font-weight: 500;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed #ced4da; /* Kẻ ngang nét đứt cho tiêu đề phụ */
+}
+section h3:first-of-type {
+     margin-top: 0; /* Không cách lề trên cho h3 đầu tiên trong section */
+}
+section h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+section h3 a:hover {
+    color: #0d6efd;
+}
+
 
 /* --- Voucher Item --- */
 .voucher-item {
@@ -92,7 +116,7 @@ section h2 a:hover {
 }
 
 .voucher-item:last-child {
-    border-bottom: none; /* Bỏ đường kẻ cho item cuối cùng */
+    border-bottom: none; /* Bỏ đường kẻ cho item cuối cùng trong một nhóm */
 }
 
 .voucher-info p {
@@ -103,6 +127,7 @@ section h2 a:hover {
 .voucher-info strong {
     font-weight: 500; /* Đậm vừa phải cho phần nhấn mạnh */
     color: #495057;
+    margin-right: 5px; /* Khoảng cách nhỏ sau dấu : */
 }
 
 
@@ -128,6 +153,17 @@ section h2 a:hover {
     white-space: nowrap; /* Không xuống dòng mã code */
 }
 
+/* Kiểu riêng cho mã không phải code nhập tay */
+.voucher-code-wrapper span.voucher-code:not([data-clipboard-text]) { /* Target span không có data-clipboard-text */
+     background-color: #f1f3f4;
+     color: #495057;
+     font-weight: normal;
+     font-family: inherit; /* Dùng font thường */
+     font-style: italic;
+     border-color: #e9ecef;
+}
+
+
 .copy-btn, .shopee-link {
     background-color: #0d6efd; /* Màu nút xanh dương */
     color: white;
@@ -137,9 +173,10 @@ section h2 a:hover {
     cursor: pointer;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: background-color 0.2s ease, transform 0.1s ease;
+    transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.3s ease;
     font-weight: 500;
     white-space: nowrap; /* Không xuống dòng chữ trên nút */
+    text-align: center;
 }
 
 .copy-btn:hover, .shopee-link:hover {
@@ -157,6 +194,16 @@ section h2 a:hover {
 .shopee-link:hover {
     background-color: #e06014; /* Cam đậm hơn */
 }
+
+/* Class để ẩn phần tử bằng JavaScript */
+.hidden {
+    display: none !important;
+    /* hoặc có thể dùng opacity và pointer-events nếu muốn hiệu ứng mờ đi thay vì biến mất hẳn */
+    /* opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease; */
+}
+
 
 /* --- Footer --- */
 footer {
@@ -199,6 +246,9 @@ footer a:hover {
     section h2 {
         font-size: 1.4rem;
     }
+     section h3 {
+        font-size: 1.15rem;
+    }
 
     .voucher-item {
         flex-direction: column; /* Chuyển thành cột trên màn hình nhỏ */
@@ -210,9 +260,15 @@ footer a:hover {
        width: 100%; /* Chiếm hết chiều rộng */
        justify-content: flex-start; /* Căn trái các nút */
        margin-top: 0.5rem;
+       gap: 0.6rem; /* Giảm khoảng cách nút trên mobile */
     }
 
     .copy-btn, .shopee-link {
-       padding: 0.6rem 1rem; /* Tăng padding cho dễ bấm */
+       padding: 0.6rem 0.8rem; /* Điều chỉnh padding nút */
+       font-size: 0.85rem;
+    }
+     .voucher-code {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.6rem;
     }
 }
