@@ -1,61 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Chức năng ẩn nút copy khi không có mã ---
-    function hideEmptyCopyButtons() {
-        const copyButtons = document.querySelectorAll('.copy-btn');
-        copyButtons.forEach(button => {
-            const textToCopy = button.getAttribute('data-clipboard-text');
-            // Ẩn nút nếu data-clipboard-text không tồn tại, rỗng, hoặc chỉ chứa khoảng trắng
-            if (!textToCopy || textToCopy.trim() === "") {
-                button.classList.add('hidden'); // Thêm class CSS để ẩn nút
+    // Danh sách các text không phải mã code thực tế cần ẩn nút copy
+    const nonCodeTexts = [
+        "Lưu trên Banner",
+        "Có sẵn trong Ví",
+        "Săn trên Live",
+        "Lưu trong Ví/Banner", // Thêm các biến thể khác nếu có
+        "Lưu tại mục Ưu đãi"
+        // Thêm các cụm từ khác bạn dùng ở đây nếu cần
+    ];
+
+    // --- Chức năng ẩn nút copy dựa trên nội dung text của mã ---
+    function hideNonCodeCopyButtons() {
+        const voucherItems = document.querySelectorAll('.voucher-item');
+
+        voucherItems.forEach(item => {
+            const codeSpan = item.querySelector('.voucher-code');
+            const copyButton = item.querySelector('.copy-btn');
+
+            if (codeSpan && copyButton) {
+                const codeText = codeSpan.textContent.trim();
+
+                // Kiểm tra xem text có nằm trong danh sách nonCodeTexts không
+                if (nonCodeTexts.includes(codeText)) {
+                    copyButton.classList.add('hidden'); // Ẩn nút copy
+                    codeSpan.classList.add('non-code'); // Thêm class để CSS style khác đi (tùy chọn)
+                } else {
+                     // Đảm bảo nút hiển thị và span không có class non-code nếu text là mã thật
+                     copyButton.classList.remove('hidden');
+                     codeSpan.classList.remove('non-code');
+                }
             }
         });
     }
 
     // Gọi hàm ẩn nút ngay khi DOM tải xong
-    hideEmptyCopyButtons();
+    hideNonCodeCopyButtons();
 
     // --- Chức năng sao chép mã ---
-    const allCopyButtons = document.querySelectorAll('.copy-btn'); // Lấy lại tất cả nút để gắn listener
+    const allCopyButtons = document.querySelectorAll('.copy-btn');
     allCopyButtons.forEach(button => {
-        // Chỉ gắn listener nếu nút KHÔNG bị ẩn (tối ưu)
+        // Chỉ gắn listener nếu nút KHÔNG bị ẩn
         if (!button.classList.contains('hidden')) {
             button.addEventListener('click', () => {
                 const textToCopy = button.getAttribute('data-clipboard-text');
                 const originalText = button.textContent;
                 const originalBgColor = button.style.backgroundColor;
 
-                // Kiểm tra mã hợp lệ trước khi sao chép (không rỗng, không phải placeholder)
-                if (navigator.clipboard && textToCopy && textToCopy.trim() !== "" && !textToCopy.startsWith('[')) {
+                 // Kiểm tra mã hợp lệ (không rỗng, không phải placeholder, không phải non-code text)
+                if (navigator.clipboard && textToCopy && textToCopy.trim() !== "" && !textToCopy.startsWith('[') && !nonCodeTexts.includes(textToCopy.trim())) {
                     navigator.clipboard.writeText(textToCopy)
                         .then(() => {
-                            // Thành công: đổi text và màu nút
                             button.textContent = 'Đã sao chép!';
-                            button.style.backgroundColor = '#198754'; // Xanh lá
-                            // Đặt lại sau 2 giây
+                            button.style.backgroundColor = '#198754';
                             setTimeout(() => {
                                 button.textContent = originalText;
-                                button.style.backgroundColor = originalBgColor || ''; // Trả lại màu gốc hoặc mặc định
+                                button.style.backgroundColor = originalBgColor || '';
                             }, 2000);
                         })
                         .catch(err => {
-                            // Lỗi: đổi text và màu nút
                             console.error('Lỗi sao chép: ', err);
                             button.textContent = 'Lỗi!';
-                            button.style.backgroundColor = '#dc3545'; // Đỏ
-                             // Đặt lại sau 2 giây
+                            button.style.backgroundColor = '#dc3545';
                             setTimeout(() => {
                                 button.textContent = originalText;
                                 button.style.backgroundColor = originalBgColor || '';
                             }, 2000);
                         });
                 } else if (textToCopy && textToCopy.startsWith('[')) {
-                     // Thông báo nếu bấm vào nút có mã placeholder
-                     alert('Mã này chưa được cập nhật. Vui lòng kiểm tra lại sau!');
+                     alert('Mã này chưa được cập nhật.');
                  } else {
-                    // Trường hợp khác (API không hỗ trợ, mã không hợp lệ đã bị ẩn nhưng vẫn click được?)
-                    console.error('Clipboard API không được hỗ trợ hoặc mã không hợp lệ.');
-                    // Không cần alert vì nút gần như chắc chắn đã bị ẩn
+                    // Mã không hợp lệ hoặc API không hỗ trợ (thường nút đã ẩn)
+                    console.log('Hành động không hợp lệ cho nút này.');
                 }
             });
         }
@@ -70,30 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const options = {
                     year: 'numeric', month: 'numeric', day: 'numeric',
                     hour: 'numeric', minute: 'numeric', second: 'numeric',
-                    hour12: false, // Định dạng 24 giờ
-                    timeZone: 'Asia/Ho_Chi_Minh' // Đặt múi giờ Việt Nam
+                    hour12: false,
+                    timeZone: 'Asia/Ho_Chi_Minh'
                 };
-                // Định dạng ngày giờ theo chuẩn Việt Nam và múi giờ đã chọn
                 const formattedDateTime = now.toLocaleString('vi-VN', options);
                 dateTimeElement.textContent = formattedDateTime;
             } catch (error) {
-                // Fallback nếu trình duyệt không hỗ trợ timeZone hoặc có lỗi khác
                 console.error("Lỗi định dạng thời gian:", error);
                 const now = new Date();
-                 const fallbackOptions = { // Options cơ bản hơn
-                    year: 'numeric', month: 'numeric', day: 'numeric',
-                    hour: 'numeric', minute: 'numeric', second: 'numeric',
-                    hour12: false
-                };
-                dateTimeElement.textContent = now.toLocaleString('vi-VN', fallbackOptions) + " (Local)"; // Ghi chú là giờ local
+                 const fallbackOptions = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: false };
+                dateTimeElement.textContent = now.toLocaleString('vi-VN', fallbackOptions) + " (Local)";
             }
         }
     }
 
-    // Gọi hàm cập nhật ngày giờ ngay khi DOM tải xong
+    // Gọi hàm cập nhật ngày giờ
     updateDateTime();
 
-    // Optional: Cập nhật thời gian mỗi phút (thường không cần thiết cho trang tĩnh)
+    // Optional: Cập nhật mỗi phút
     // setInterval(updateDateTime, 60000);
 
-}); // Kết thúc của addEventListener('DOMContentLoaded', ...)
+}); // Kết thúc DOMContentLoaded
