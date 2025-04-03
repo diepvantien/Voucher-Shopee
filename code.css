@@ -1,0 +1,218 @@
+/* --- CSS Reset & Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+    color: #333;
+    background-color: #f8f9fa; /* Màu nền rất nhạt */
+    font-weight: 300; /* Font weight nhẹ hơn */
+}
+
+/* --- Container --- */
+.container {
+    max-width: 800px;
+    margin: 2rem auto; /* Tăng khoảng cách trên dưới */
+    padding: 1.5rem 2rem; /* Tăng padding */
+    background-color: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Bóng đổ nhẹ hơn */
+    border-radius: 8px; /* Bo góc nhẹ */
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem; /* Tăng khoảng cách dưới header */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+}
+
+header h1 {
+    font-size: 2.2rem; /* Tăng cỡ chữ tiêu đề */
+    color: #212529;
+    margin-bottom: 0.5rem;
+    font-weight: 700; /* Đậm hơn cho tiêu đề chính */
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+.last-updated {
+    font-size: 0.9rem;
+    color: #adb5bd;
+    margin-top: 0.5rem;
+}
+
+
+/* --- Main Content & Sections --- */
+main {
+    margin-top: 2rem;
+}
+
+section {
+    margin-bottom: 3rem; /* Khoảng cách lớn giữa các section */
+}
+
+section h2 {
+    font-size: 1.6rem; /* Cỡ chữ vừa phải cho tiêu đề mục */
+    color: #343a40;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #dee2e6; /* Đường kẻ dưới tiêu đề mục */
+    font-weight: 500; /* Độ đậm vừa phải */
+}
+
+section h2 a {
+    color: inherit; /* Kế thừa màu từ h2 */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+section h2 a:hover {
+    color: #0d6efd; /* Màu xanh dương khi hover */
+}
+
+
+/* --- Voucher Item --- */
+.voucher-item {
+    display: flex; /* Sắp xếp thông tin và nút/mã cạnh nhau */
+    justify-content: space-between; /* Đẩy 2 phần ra xa nhau */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 1.2rem 0; /* Padding trên dưới */
+    border-bottom: 1px solid #f1f3f4; /* Đường kẻ phân cách nhẹ nhàng */
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+    gap: 1rem; /* Khoảng cách giữa các phần tử khi xuống dòng */
+}
+
+.voucher-item:last-child {
+    border-bottom: none; /* Bỏ đường kẻ cho item cuối cùng */
+}
+
+.voucher-info p {
+    margin-bottom: 0.3rem; /* Khoảng cách nhỏ giữa các dòng thông tin */
+    font-size: 0.95rem; /* Cỡ chữ thông tin */
+}
+
+.voucher-info strong {
+    font-weight: 500; /* Đậm vừa phải cho phần nhấn mạnh */
+    color: #495057;
+}
+
+
+/* --- Voucher Code & Actions --- */
+.voucher-code-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Khoảng cách giữa mã, nút copy, link */
+    flex-shrink: 0; /* Không co lại khi không đủ chỗ */
+    flex-wrap: wrap; /* Cho phép các nút xuống dòng */
+    justify-content: flex-end; /* Căn lề phải khi xuống dòng */
+}
+
+.voucher-code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #e9ecef; /* Nền xám nhạt cho mã */
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 1rem; /* Cỡ chữ mã code */
+    color: #c92a2a; /* Màu đỏ cho mã */
+    font-weight: bold;
+    border: 1px solid #dee2e6;
+    white-space: nowrap; /* Không xuống dòng mã code */
+}
+
+.copy-btn, .shopee-link {
+    background-color: #0d6efd; /* Màu nút xanh dương */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-weight: 500;
+    white-space: nowrap; /* Không xuống dòng chữ trên nút */
+}
+
+.copy-btn:hover, .shopee-link:hover {
+    background-color: #0b5ed7; /* Màu đậm hơn khi hover */
+}
+
+.copy-btn:active {
+     background-color: #0a58ca;
+     transform: scale(0.98); /* Hiệu ứng nhấn nút */
+}
+
+.shopee-link {
+    background-color: #f57224; /* Màu cam Shopee */
+}
+.shopee-link:hover {
+    background-color: #e06014; /* Cam đậm hơn */
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+    }
+
+    .voucher-item {
+        flex-direction: column; /* Chuyển thành cột trên màn hình nhỏ */
+        align-items: flex-start; /* Căn trái các phần tử */
+        gap: 0.8rem;
+    }
+
+    .voucher-code-wrapper {
+       width: 100%; /* Chiếm hết chiều rộng */
+       justify-content: flex-start; /* Căn trái các nút */
+       margin-top: 0.5rem;
+    }
+
+    .copy-btn, .shopee-link {
+       padding: 0.6rem 1rem; /* Tăng padding cho dễ bấm */
+    }
+}
