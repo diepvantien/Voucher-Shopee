@@ -5,9 +5,519 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voucher Shopee | Mã Giảm Giá Shopee Mới Nhất</title>
     <meta name="description" content="Tổng hợp mã giảm giá, voucher Shopee mới nhất. Cập nhật liên tục các mã freeship, giảm giá và hoàn xu Shopee.">
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #ee4d2d;
+            --secondary-color: #f5f5f5;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --light-text: #666;
+            --border-color: #ddd;
+            --success-color: #4caf50;
+            --freeship-color: #2196f3;
+            --discount-color: #e91e63;
+            --cashback-color: #ff9800;
+            --other-color: #9c27b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #ff7043 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .search-container input:focus {
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Main content styles */
+        main {
+            padding: 2rem 0;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vouchers {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .voucher-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .voucher-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .voucher-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+        }
+
+        .voucher-card[data-category="freeship"]::before {
+            background: var(--freeship-color);
+        }
+
+        .voucher-card[data-category="discount"]::before {
+            background: var(--discount-color);
+        }
+
+        .voucher-card[data-category="cashback"]::before {
+            background: var(--cashback-color);
+        }
+
+        .voucher-card[data-category="other"]::before {
+            background: var(--other-color);
+        }
+
+        .voucher-header {
+            padding: 15px 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--primary-color);
+        }
+
+        .voucher-card[data-category="freeship"] .voucher-header {
+            color: var(--freeship-color);
+        }
+
+        .voucher-card[data-category="discount"] .voucher-header {
+            color: var(--discount-color);
+        }
+
+        .voucher-card[data-category="cashback"] .voucher-header {
+            color: var(--cashback-color);
+        }
+
+        .voucher-card[data-category="other"] .voucher-header {
+            color: var(--other-color);
+        }
+
+        .voucher-header::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .voucher-card[data-category="freeship"] .voucher-header::after {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232196f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>');
+        }
+
+        .voucher-card[data-category="discount"] .voucher-header::after {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e91e63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>');
+        }
+
+        .voucher-card[data-category="cashback"] .voucher-header::after {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>');
+        }
+
+        .voucher-body {
+            padding: 20px;
+        }
+
+        .voucher-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .voucher-description {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .voucher-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-text);
+            font-size: 13px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .voucher-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .voucher-meta span::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .voucher-meta span:first-child::before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>');
+        }
+
+        .voucher-meta span:last-child::before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>');
+        }
+
+        .copy-code {
+            display: flex;
+            margin-top: 15px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .code {
+            background: var(--secondary-color);
+            padding: 10px 15px;
+            border-radius: 6px 0 0 6px;
+            border: 1px dashed var(--border-color);
+            border-right: none;
+            font-family: monospace;
+            font-weight: bold;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+            color: var(--text-color);
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voucher-card[data-category="freeship"] .copy-btn {
+            background: var(--freeship-color);
+        }
+
+        .voucher-card[data-category="discount"] .copy-btn {
+            background: var(--discount-color);
+        }
+
+        .voucher-card[data-category="cashback"] .copy-btn {
+            background: var(--cashback-color);
+        }
+
+        .copy-btn:hover {
+            opacity: 0.9;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease-out;
+        }
+
+        .copy-btn:active::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+        }
+
+        /* Filter tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 15px auto 25px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 8px 18px;
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-tab:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-2px);
+        }
+
+        .filter-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .filter-tab[data-category="freeship"].active {
+            background-color: var(--freeship-color);
+            border-color: var(--freeship-color);
+        }
+
+        .filter-tab[data-category="discount"].active {
+            background-color: var(--discount-color);
+            border-color: var(--discount-color);
+        }
+
+        .filter-tab[data-category="cashback"].active {
+            background-color: var(--cashback-color);
+            border-color: var(--cashback-color);
+        }
+
+        .filter-tab[data-category="other"].active {
+            background-color: var(--other-color);
+            border-color: var(--other-color);
+        }
+
+        /* Status message */
+        .status-message {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.1rem;
+            color: var(--light-text);
+        }
+
+        /* Success animation */
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.8); }
+            20% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 1100;
+            animation: fadeInOut 2s forwards;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .success-message::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--light-text);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #d23f21;
+            text-decoration: underline;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .vouchers {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-tab {
+                padding: 6px 14px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vouchers {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .voucher-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .filter-tabs {
+                gap: 5px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --secondary-color: #222;
+                --text-color: #f5f5f5;
+                --light-text: #aaa;
+                --border-color: #444;
+            }
+            
+            body {
+                background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            }
+            
+            .voucher-card, footer, .filter-tab {
+                background-color: #333;
+            }
+            
+            .search-container input, .search-container select {
+                background-color: rgba(30, 30, 30, 0.8);
+                color: var(--text-color);
+            }
+            
+            .code {
+                background: #444;
+                color: #f0f0f0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -49,7 +559,329 @@
         </div>
     </footer>
 
-    <script src="js/vouchers-data.js"></script>
-    <script src="js/main.js"></script>
+    <script>
+        // Dữ liệu voucher được nhúng trực tiếp
+        const VOUCHERS_DATA = [
+            {
+                code: "GOFREE25425",
+                title: "Freeship 15K",
+                description: "Đơn hàng từ 0Đ",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "30/04/2025"
+            },
+            {
+                code: "GOFREE25424",
+                title: "Freeship Extra",
+                description: "Giảm 70K phí vận chuyển",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "30/04/2025",
+                minOrder: "150K"
+            },
+            {
+                code: "CPNEW50",
+                title: "Giảm 50K",
+                description: "Dành cho người dùng mới",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "31/05/2025",
+                minOrder: "150K"
+            },
+            {
+                code: "CPNEW25",
+                title: "Giảm 25K",
+                description: "Dành cho người dùng mới",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "31/05/2025",
+                minOrder: "50K"
+            },
+            {
+                code: "ELMTCB10",
+                title: "Hoàn 10% xu",
+                description: "Áp dụng cho đơn hàng Shopee Mall",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "15/04/2025",
+                minOrder: "500K"
+            },
+            {
+                code: "SPPCOINELM",
+                title: "Hoàn 100K xu",
+                description: "Lần đầu thanh toán qua ví SPayLater",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "10/04/2025"
+            },
+            {
+                code: "NEWMALL25",
+                title: "Giảm 25K đơn Shopee Mall",
+                description: "Áp dụng cho sản phẩm tại Shopee Mall",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "30/04/2025",
+                minOrder: "250K"
+            },
+            {
+                code: "SPPCOIN88",
+                title: "Hoàn 15% xu",
+                description: "Tối đa 70K, đơn tối thiểu 300K",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "30/04/2025",
+                minOrder: "300K"
+            },
+            {
+                code: "MALLCT100",
+                title: "Giảm 100K đơn Shopee Mall",
+                description: "Áp dụng cho sản phẩm tại Shopee Mall",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "15/04/2025",
+                minOrder: "1000K"
+            },
+            {
+                code: "SPPFOOD40",
+                title: "Giảm 40K ShopeeFood",
+                description: "Đặt món từ ShopeeFood",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "15/04/2025",
+                minOrder: "120K"
+            },
+            {
+                code: "TOANCAU8K4",
+                title: "Giảm 8K đơn hàng quốc tế",
+                description: "Áp dụng cho đơn hàng quốc tế",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "10/04/2025",
+                minOrder: "50K"
+            },
+            {
+                code: "NEWTOALL",
+                title: "Voucher toàn sàn",
+                description: "Giảm 10% tối đa 100K",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "20/04/2025",
+                minOrder: "500K"
+            },
+            {
+                code: "SHOPEE4ALL",
+                title: "Giảm 20K cho đơn hàng",
+                description: "Áp dụng cho tất cả sản phẩm",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "30/04/2025",
+                minOrder: "100K"
+            },
+            {
+                code: "FREESHIP0D04",
+                title: "Freeship 0Đ",
+                description: "Giảm 100% phí vận chuyển tối đa 25K",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "15/04/2025",
+                minOrder: "50K"
+            },
+            {
+                code: "SPPCOIN25K",
+                title: "Hoàn 25K xu",
+                description: "Cho đơn hàng đầu tiên",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "30/04/2025",
+                minOrder: "150K"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the application
+            initApp();
+            
+            // Set current date on footer
+            const today = new Date();
+            document.getElementById('last-updated').textContent = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
+        });
+
+        async function initApp() {
+            try {
+                // Hiển thị loading
+                const loadingElement = document.getElementById('loading');
+                loadingElement.style.display = 'flex';
+                
+                // Dùng dữ liệu có sẵn
+                const vouchers = VOUCHERS_DATA;
+                
+                // Save vouchers for filtering
+                window.allVouchers = vouchers;
+                
+                // Display vouchers
+                displayVouchers(vouchers);
+                
+                // Set up search and filtering
+                setupSearchAndFilter();
+                
+                // Set up filter tabs
+                setupFilterTabs();
+            } catch (error) {
+                console.error('Error initializing app:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('status-message').textContent = `Lỗi tải mã voucher: ${error.message}`;
+                document.getElementById('status-message').style.display = 'block';
+            }
+        }
+
+        function displayVouchers(vouchers) {
+            const vouchersContainer = document.getElementById('vouchers');
+            const loadingElement = document.getElementById('loading');
+            const statusElement = document.getElementById('status-message');
+            
+            // Hide loading indicator
+            loadingElement.style.display = 'none';
+            
+            // Clear any existing content
+            vouchersContainer.innerHTML = '';
+            
+            if (!vouchers || vouchers.length === 0) {
+                statusElement.textContent = 'Không tìm thấy voucher nào phù hợp.';
+                statusElement.style.display = 'block';
+                return;
+            } else {
+                statusElement.style.display = 'none';
+            }
+            
+            // Create and append voucher cards
+            vouchers.forEach(voucher => {
+                const voucherCard = createVoucherCard(voucher);
+                vouchersContainer.appendChild(voucherCard);
+            });
+            
+            // Set up copy buttons
+            setupCopyButtons();
+        }
+
+        function createVoucherCard(voucher) {
+            const card = document.createElement('div');
+            card.className = 'voucher-card';
+            card.setAttribute('data-category', voucher.category || 'other');
+            
+            card.innerHTML = `
+                <div class="voucher-header">${voucher.type || 'Voucher'}</div>
+                <div class="voucher-body">
+                    <h2 class="voucher-title">${escapeHTML(voucher.title)}</h2>
+                    ${voucher.description ? `<p class="voucher-description">${escapeHTML(voucher.description)}</p>` : ''}
+                    
+                    ${voucher.code ? `
+                    <div class="copy-code">
+                        <div class="code">${voucher.code}</div>
+                        <button class="copy-btn" data-code="${voucher.code}">Copy</button>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="voucher-meta">
+                        ${voucher.validUntil ? `<span>HSD: ${voucher.validUntil}</span>` : '<span>Không thời hạn</span>'}
+                        ${voucher.minOrder ? `<span>Đơn tối thiểu: ${voucher.minOrder}</span>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function setupCopyButtons() {
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    navigator.clipboard.writeText(code)
+                        .then(() => {
+                            // Show success message
+                            const successMessage = document.getElementById('success-message');
+                            successMessage.style.animation = 'none';
+                            successMessage.offsetHeight; // Trigger reflow
+                            successMessage.style.animation = 'fadeInOut 2s forwards';
+                            
+                            // Change button text temporarily
+                            const originalText = this.textContent;
+                            this.textContent = 'Đã copy!';
+                            setTimeout(() => {
+                                this.textContent = originalText;
+                            }, 1500);
+                        })
+                        .catch(err => {
+                            console.error('Failed to copy code:', err);
+                            alert(`Không thể copy mã: ${code}\nVui lòng copy thủ công.`);
+                        });
+                });
+            });
+        }
+
+        function setupSearchAndFilter() {
+            const searchInput = document.getElementById('search');
+            
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const activeCategory = document.querySelector('.filter-tab.active').getAttribute('data-category');
+                
+                let filteredVouchers = window.allVouchers;
+                
+                // Apply category filter
+                if (activeCategory !== 'all') {
+                    filteredVouchers = filteredVouchers.filter(voucher => 
+                        voucher.category && voucher.category === activeCategory
+                    );
+                }
+                
+                // Apply search term
+                if (searchTerm) {
+                    filteredVouchers = filteredVouchers.filter(voucher => 
+                        (voucher.title && voucher.title.toLowerCase().includes(searchTerm)) ||
+                        (voucher.description && voucher.description.toLowerCase().includes(searchTerm)) ||
+                        (voucher.code && voucher.code.toLowerCase().includes(searchTerm))
+                    );
+                }
+                
+                displayVouchers(filteredVouchers);
+            }
+            
+            searchInput.addEventListener('input', applyFilters);
+        }
+
+        function setupFilterTabs() {
+            const tabs = document.querySelectorAll('.filter-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Apply filters
+                    const searchInput = document.getElementById('search');
+                    const event = new Event('input', { bubbles: true });
+                    searchInput.dispatchEvent(event);
+                });
+            });
+        }
+
+        // Helper function to escape HTML to prevent XSS
+        function escapeHTML(str) {
+            if (!str) return '';
+            
+            return str.replace(/[&<>"']/g, function(match) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#39;'
+                }[match];
+            });
+        }
+    </script>
 </body>
 </html>
