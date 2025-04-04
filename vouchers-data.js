@@ -1,5 +1,6 @@
 // Dữ liệu voucher tĩnh - được trích xuất từ Google Docs
 const VOUCHERS_DATA = [
+    // Dữ liệu tĩnh dự phòng khi không kết nối được với Google Apps Script
     {
         code: "GOFREE25425",
         title: "Freeship 15K",
@@ -25,116 +26,48 @@ const VOUCHERS_DATA = [
         type: "Giảm giá",
         validUntil: "31/05/2025",
         minOrder: "150K"
-    },
-    {
-        code: "CPNEW25",
-        title: "Giảm 25K",
-        description: "Dành cho người dùng mới",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "31/05/2025",
-        minOrder: "50K"
-    },
-    {
-        code: "ELMTCB10",
-        title: "Hoàn 10% xu",
-        description: "Áp dụng cho đơn hàng Shopee Mall",
-        category: "cashback",
-        type: "Hoàn xu",
-        validUntil: "15/04/2025",
-        minOrder: "500K"
-    },
-    {
-        code: "SPPCOINELM",
-        title: "Hoàn 100K xu",
-        description: "Lần đầu thanh toán qua ví SPayLater",
-        category: "cashback",
-        type: "Hoàn xu",
-        validUntil: "10/04/2025"
-    },
-    {
-        code: "NEWMALL25",
-        title: "Giảm 25K đơn Shopee Mall",
-        description: "Áp dụng cho sản phẩm tại Shopee Mall",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "30/04/2025",
-        minOrder: "250K"
-    },
-    {
-        code: "SPPCOIN88",
-        title: "Hoàn 15% xu",
-        description: "Tối đa 70K, đơn tối thiểu 300K",
-        category: "cashback",
-        type: "Hoàn xu",
-        validUntil: "30/04/2025",
-        minOrder: "300K"
-    },
-    {
-        code: "MALLCT100",
-        title: "Giảm 100K đơn Shopee Mall",
-        description: "Áp dụng cho sản phẩm tại Shopee Mall",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "15/04/2025",
-        minOrder: "1000K"
-    },
-    {
-        code: "SPPFOOD40",
-        title: "Giảm 40K ShopeeFood",
-        description: "Đặt món từ ShopeeFood",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "15/04/2025",
-        minOrder: "120K"
-    },
-    {
-        code: "TOANCAU8K4",
-        title: "Giảm 8K đơn hàng quốc tế",
-        description: "Áp dụng cho đơn hàng quốc tế",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "10/04/2025",
-        minOrder: "50K"
-    },
-    {
-        code: "NEWTOALL",
-        title: "Voucher toàn sàn",
-        description: "Giảm 10% tối đa 100K",
-        category: "discount",
-        type: "Giảm giá",
-        validUntil: "20/04/2025",
-        minOrder: "500K"
     }
+    // Các voucher khác có thể được thêm vào đây
 ];
 
-// Hàm để thêm voucher từ Google Docs một cách an toàn tránh CORS
+// Hàm để lấy voucher từ Google Apps Script
 async function fetchVouchers() {
     try {
-        // Thử tải dữ liệu từ Google Docs Web App (nếu đã cài đặt)
+        // Sử dụng Google Apps Script URL đã cung cấp
+        const scriptUrl = "https://script.google.com/macros/s/AKfycbxGI2QD3mOc6ZvPuLxCuCcvb0-gbZ6t9hbYZRmt7rW7UvNyD1xDFV59FQ5n_cdCue_VsA/exec";
         const docId = '1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w';
-        const scriptUrl = `https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?docId=${docId}`;
+        const fullUrl = `${scriptUrl}?docId=${docId}`;
         
-        try {
-            const response = await fetch(scriptUrl);
-            
-            if (response.ok) {
-                const data = await response.json();
-                if (data && data.length > 0) {
-                    console.log('Loaded data from Google Apps Script');
-                    return data;
-                }
+        console.log("Đang tải dữ liệu từ Google Apps Script...");
+        
+        // Thêm timestamp để tránh cache
+        const timestamp = new Date().getTime();
+        const response = await fetch(`${fullUrl}&t=${timestamp}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
             }
-        } catch (e) {
-            console.log('Could not load from Google Apps Script, using static data');
+        });
+            
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data && Array.isArray(data) && data.length > 0) {
+                console.log('Tải thành công từ Google Apps Script:', data.length, 'vouchers');
+                return data;
+            } else if (data && data.error) {
+                console.error('Lỗi từ Google Apps Script:', data.error);
+            }
+        } else {
+            console.error('Không thể kết nối với Google Apps Script:', response.status);
         }
-        
-        // Nếu không thành công, sử dụng dữ liệu tĩnh
-        return VOUCHERS_DATA;
-    } catch (error) {
-        console.error('Error fetching vouchers:', error);
-        return VOUCHERS_DATA;
+    } catch (e) {
+        console.error('Lỗi khi tải từ Google Apps Script:', e);
     }
+    
+    // Nếu không thành công, sử dụng dữ liệu tĩnh
+    console.log('Sử dụng dữ liệu tĩnh thay thế');
+    return VOUCHERS_DATA;
 }
 
 // Để thêm voucher thủ công từ Google Docs
@@ -178,7 +111,7 @@ function parseDocContent(text) {
             if (!currentVoucher.title) {
                 currentVoucher.title = line;
                 // Phân loại voucher dựa trên tiêu đề
-                if (line.toLowerCase().includes('freeship') || line.toLowerCase().includes('miễn phí vận chuyển')) {
+                if (line.toLowerCase().includes('freeship') || line.toLowerCase().includes('miễn phí vận chuyển') || line.toLowerCase().includes('free ship')) {
                     currentVoucher.category = 'freeship';
                     currentVoucher.type = 'Freeship';
                 } else if (line.toLowerCase().includes('giảm') || line.toLowerCase().includes('giá')) {
