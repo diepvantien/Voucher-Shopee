@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopee Vouchers</title>
+    <title>Shopee Vouchers | Mã Giảm Giá Shopee Mới Nhất</title>
+    <meta name="description" content="Tổng hợp mã giảm giá, voucher Shopee mới nhất. Cập nhật liên tục các mã freeship, giảm giá và hoàn xu Shopee.">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
 </head>
 <body>
     <header>
@@ -13,17 +15,19 @@
             <h1>Shopee Vouchers</h1>
             <div class="search-container">
                 <input type="text" id="search" placeholder="Tìm kiếm voucher...">
-                <select id="filter">
-                    <option value="all">Tất cả</option>
-                    <option value="freeship">Freeship</option>
-                    <option value="discount">Giảm giá</option>
-                    <option value="cashback">Hoàn tiền</option>
-                </select>
             </div>
         </div>
     </header>
 
     <main class="container">
+        <div class="filter-tabs" id="filter-tabs">
+            <div class="filter-tab active" data-category="all">Tất cả</div>
+            <div class="filter-tab" data-category="freeship">Freeship</div>
+            <div class="filter-tab" data-category="discount">Giảm giá</div>
+            <div class="filter-tab" data-category="cashback">Hoàn xu</div>
+            <div class="filter-tab" data-category="other">Khác</div>
+        </div>
+        
         <div class="loading" id="loading">
             <div class="spinner"></div>
             <p>Đang tải vouchers...</p>
@@ -32,12 +36,16 @@
         <div class="vouchers" id="vouchers">
             <!-- Vouchers will be inserted here -->
         </div>
+        
+        <div id="status-message" class="status-message" style="display: none;"></div>
     </main>
+
+    <div id="success-message" class="success-message">Đã copy mã voucher!</div>
 
     <footer>
         <div class="container">
-            <p>Dữ liệu được lấy từ <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Docs</a></p>
-            <p>© 2025 Shopee Voucher Display</p>
+            <p>Dữ liệu được lấy từ <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Docs</a> | Cập nhật: <span id="last-updated">04/04/2025</span></p>
+            <p>© 2025 Shopee Voucher Display | Tạo bởi <a href="https://github.com/diepvantien" target="_blank">diepvantien</a></p>
         </div>
     </footer>
 
