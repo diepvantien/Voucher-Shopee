@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Set current date on footer
     const today = new Date();
-    document.getElementById('last-updated').textContent = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+    document.getElementById('last-updated').textContent = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
 });
 
 async function initApp() {
@@ -42,7 +42,7 @@ function displayVouchers(vouchers) {
     // Clear any existing content
     vouchersContainer.innerHTML = '';
     
-    if (vouchers.length === 0) {
+    if (!vouchers || vouchers.length === 0) {
         statusElement.textContent = 'Không tìm thấy voucher nào phù hợp.';
         statusElement.style.display = 'block';
         return;
@@ -79,7 +79,7 @@ function createVoucherCard(voucher) {
             ` : ''}
             
             <div class="voucher-meta">
-                ${voucher.validUntil ? `<span>Hết hạn: ${voucher.validUntil}</span>` : '<span>Không thời hạn</span>'}
+                ${voucher.validUntil ? `<span>HSD: ${voucher.validUntil}</span>` : '<span>Không thời hạn</span>'}
                 ${voucher.minOrder ? `<span>Đơn tối thiểu: ${voucher.minOrder}</span>` : ''}
             </div>
         </div>
