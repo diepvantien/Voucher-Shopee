@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Vouchers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Shopee Vouchers</h1>
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Tìm kiếm voucher...">
+                <select id="filter">
+                    <option value="all">Tất cả</option>
+                    <option value="freeship">Freeship</option>
+                    <option value="discount">Giảm giá</option>
+                    <option value="cashback">Hoàn tiền</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Đang tải vouchers...</p>
+        </div>
+        
+        <div class="vouchers" id="vouchers">
+            <!-- Vouchers will be inserted here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Dữ liệu được lấy từ <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Docs</a></p>
+            <p>© 2025 Shopee Voucher Display</p>
+        </div>
+    </footer>
+
+    <script src="js/fetch-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
