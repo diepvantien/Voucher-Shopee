@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voucher Shopee | Mã Giảm Giá Shopee Mới Nhất</title>
+    <title>Mã Giảm Giá Shopee | Voucher Shopee Mới Nhất</title>
     <meta name="description" content="Tổng hợp mã giảm giá, voucher Shopee mới nhất. Cập nhật liên tục các mã freeship, giảm giá và hoàn xu Shopee.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
     <style>
-        /* Base styles */
         :root {
             --primary-color: #ee4d2d;
             --secondary-color: #f5f5f5;
-            --accent-color: #ffc107;
             --text-color: #333;
-            --light-text: #666;
-            --border-color: #ddd;
+            --border-color: #e0e0e0;
+            --light-gray: #f8f8f8;
             --success-color: #4caf50;
-            --freeship-color: #2196f3;
-            --discount-color: #e91e63;
-            --cashback-color: #ff9800;
-            --other-color: #9c27b0;
             --button-hover: #d23f21;
-            --use-now-color: #4CAF50;
-            --use-now-hover: #388E3C;
         }
 
         * {
@@ -37,8 +30,6 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--secondary-color);
-            background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
         }
 
         .container {
@@ -47,795 +38,779 @@
             padding: 0 15px;
         }
 
-        /* Header styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff7043 100%);
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
 
-        header h1 {
-            margin-bottom: 1rem;
+        .header-top {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 0;
             text-align: center;
-            font-size: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            font-weight: 700;
-            letter-spacing: 1px;
         }
 
-        .search-container {
+        .header-top h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .header-nav {
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .search-container input {
-            padding: 12px 15px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            flex-grow: 1;
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-
-        .search-container input:focus {
-            outline: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-        }
-
-        /* Main content styles */
-        main {
-            padding: 2rem 0;
-        }
-
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 3rem 0;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
-            margin-bottom: 1rem;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .vouchers {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-
-        .voucher-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .voucher-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .voucher-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--primary-color);
-        }
-
-        .voucher-card[data-category="freeship"]::before {
-            background: var(--freeship-color);
-        }
-
-        .voucher-card[data-category="discount"]::before {
-            background: var(--discount-color);
-        }
-
-        .voucher-card[data-category="cashback"]::before {
-            background: var(--cashback-color);
-        }
-
-        .voucher-card[data-category="other"]::before {
-            background: var(--other-color);
-        }
-
-        .voucher-header {
-            padding: 15px 20px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .brand span {
+            font-size: 22px;
+            font-weight: bold;
             color: var(--primary-color);
         }
 
-        .voucher-card[data-category="freeship"] .voucher-header {
-            color: var(--freeship-color);
+        .search-box {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
         }
 
-        .voucher-card[data-category="discount"] .voucher-header {
-            color: var(--discount-color);
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            font-size: 14px;
+            outline: none;
         }
 
-        .voucher-card[data-category="cashback"] .voucher-header {
-            color: var(--cashback-color);
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
         }
 
-        .voucher-card[data-category="other"] .voucher-header {
-            color: var(--other-color);
+        /* Main content */
+        main {
+            padding: 30px 0;
         }
 
-        .voucher-header::after {
-            content: "";
-            width: 30px;
-            height: 30px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .section-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
         }
 
-        .voucher-card[data-category="freeship"] .voucher-header::after {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232196f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>');
+        .section-title i {
+            margin-right: 10px;
         }
 
-        .voucher-card[data-category="discount"] .voucher-header::after {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23e91e63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>');
+        .vouchers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        .voucher-card[data-category="cashback"] .voucher-header::after {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>');
+        .voucher-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .voucher-body {
-            padding: 20px;
+        .voucher-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .voucher-top {
+            position: relative;
+        }
+
+        .voucher-image {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .voucher-tag {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 0 4px 4px 0;
+            font-weight: bold;
+        }
+
+        .voucher-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .voucher-title {
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--text-color);
-            font-size: 1.1rem;
+            font-size: 16px;
+            font-weight: 700;
             line-height: 1.4;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            min-height: 45px;
         }
 
         .voucher-description {
             font-size: 14px;
-            color: var(--light-text);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            color: #666;
+            margin-bottom: 15px;
+            flex-grow: 1;
         }
 
         .voucher-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--light-text);
             font-size: 13px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-            margin-top: 15px;
+            color: #666;
+            margin-top: auto;
+            margin-bottom: 15px;
         }
 
-        .voucher-meta span {
+        .voucher-meta div {
+            margin-bottom: 5px;
             display: flex;
             align-items: center;
         }
 
-        .voucher-meta span::before {
-            content: "";
-            width: 16px;
-            height: 16px;
+        .voucher-meta i {
             margin-right: 5px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+            color: var(--primary-color);
+            width: 16px;
+            text-align: center;
         }
 
-        .voucher-meta span:first-child::before {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>');
-        }
-
-        .voucher-meta span:last-child::before {
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>');
-        }
-
-        .voucher-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .copy-code {
-            display: flex;
-            margin-top: 15px;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            width: 100%;
-        }
-
-        .code {
-            background: var(--secondary-color);
-            padding: 10px 15px;
-            border-radius: 6px 0 0 6px;
+        .voucher-code {
+            background-color: var(--light-gray);
             border: 1px dashed var(--border-color);
-            border-right: none;
+            padding: 10px;
+            text-align: center;
             font-family: monospace;
+            font-size: 16px;
             font-weight: bold;
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
+            color: var(--primary-color);
             letter-spacing: 1px;
-            color: var(--text-color);
-        }
-
-        .button-container {
-            display: flex;
-            gap: 5px;
-            margin-top: 15px;
-        }
-
-        .copy-btn, .use-now-btn {
-            padding: 0 15px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
+            margin: 10px 0;
             position: relative;
-            overflow: hidden;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
         }
 
-        .copy-btn {
-            background: var(--primary-color);
-            color: white;
-            border-radius: 6px 0 0 6px;
-            flex: 1;
-        }
-
-        .use-now-btn {
-            background: var(--use-now-color);
-            color: white;
-            border-radius: 0 6px 6px 0;
-            flex: 1;
-        }
-
-        .voucher-card[data-category="freeship"] .copy-btn {
-            background: var(--freeship-color);
-        }
-
-        .voucher-card[data-category="discount"] .copy-btn {
-            background: var(--discount-color);
-        }
-
-        .voucher-card[data-category="cashback"] .copy-btn {
-            background: var(--cashback-color);
-        }
-
-        .copy-btn:hover {
-            background: var(--button-hover);
-        }
-
-        .use-now-btn:hover {
-            background: var(--use-now-hover);
-        }
-
-        .copy-btn:active, .use-now-btn:active {
-            transform: scale(0.98);
-        }
-
-        .copy-btn::after, .use-now-btn::after {
-            content: "";
+        .copied-text {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.3s ease-out;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: none;
         }
 
-        .copy-btn:active::after, .use-now-btn:active::after {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0;
+        .voucher-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        /* Filter tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            margin: 15px auto 25px;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            padding: 8px 18px;
-            background-color: white;
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
+        .btn {
+            padding: 10px;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: bold;
             transition: all 0.2s ease;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        .filter-tab:hover {
-            background-color: #f9f9f9;
-            transform: translateY(-2px);
+        .btn-copy {
+            background-color: var(--light-gray);
+            color: var(--text-color);
         }
 
-        .filter-tab.active {
+        .btn-copy:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn-use {
             background-color: var(--primary-color);
             color: white;
-            border-color: var(--primary-color);
         }
 
-        .filter-tab[data-category="freeship"].active {
-            background-color: var(--freeship-color);
-            border-color: var(--freeship-color);
+        .btn-use:hover {
+            background-color: var(--button-hover);
         }
 
-        .filter-tab[data-category="discount"].active {
-            background-color: var(--discount-color);
-            border-color: var(--discount-color);
-        }
-
-        .filter-tab[data-category="cashback"].active {
-            background-color: var(--cashback-color);
-            border-color: var(--cashback-color);
-        }
-
-        .filter-tab[data-category="other"].active {
-            background-color: var(--other-color);
-            border-color: var(--other-color);
-        }
-
-        /* Status message */
-        .status-message {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.1rem;
-            color: var(--light-text);
-        }
-
-        /* Success animation */
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: scale(0.8); }
-            20% { opacity: 1; transform: scale(1); }
-            80% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.8); }
-        }
-
-        .success-message {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--success-color);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        /* Categories section */
+        .categories {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 1100;
-            animation: fadeInOut 2s forwards;
-            opacity: 0;
-            pointer-events: none;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) var(--light-gray);
         }
 
-        .success-message::before {
-            content: "";
-            width: 20px;
-            height: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
+        .categories::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .categories::-webkit-scrollbar-track {
+            background: var(--light-gray);
+        }
+
+        .categories::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .category-item {
+            flex: 0 0 auto;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .category-item:hover, .category-item.active {
+            background-color: var(--primary-color);
+            color: white;
         }
 
         /* Footer styles */
         footer {
             background-color: white;
+            padding: 30px 0;
             border-top: 1px solid var(--border-color);
-            padding: 1.5rem 0;
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--light-text);
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
         }
 
-        footer a {
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
             color: var(--primary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #666;
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.2s ease;
         }
 
-        footer a:hover {
-            color: #d23f21;
-            text-decoration: underline;
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Success notification */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--success-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid rgba(238, 77, 45, 0.1);
+            border-top-color: var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Store banners */
+        .store-banner {
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .store-banner img {
+            width: 100%;
+            display: block;
         }
 
         /* Responsive styles */
         @media (max-width: 768px) {
-            .vouchers {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 20px;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .filter-tab {
-                padding: 6px 14px;
-                font-size: 14px;
-            }
-            
-            .button-container {
+            .header-nav {
                 flex-direction: column;
+                padding-top: 15px;
             }
             
-            .copy-btn, .use-now-btn {
-                width: 100%;
-                border-radius: 6px;
+            .search-box {
+                margin: 15px 0;
+                max-width: 100%;
+            }
+            
+            .vouchers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .footer-column {
+                flex-basis: 50%;
             }
         }
 
         @media (max-width: 480px) {
-            .vouchers {
+            .vouchers-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
             }
             
-            .voucher-meta {
-                flex-direction: column;
-                gap: 5px;
+            .voucher-buttons {
+                grid-template-columns: 1fr;
             }
             
-            .filter-tabs {
-                gap: 5px;
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --secondary-color: #222;
-                --text-color: #f5f5f5;
-                --light-text: #aaa;
-                --border-color: #444;
-            }
-            
-            body {
-                background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            }
-            
-            .voucher-card, footer, .filter-tab {
-                background-color: #333;
-            }
-            
-            .search-container input, .search-container select {
-                background-color: rgba(30, 30, 30, 0.8);
-                color: var(--text-color);
-            }
-            
-            .code {
-                background: #444;
-                color: #f0f0f0;
+            .footer-column {
+                flex-basis: 100%;
             }
         }
     </style>
 </head>
 <body>
+    <div class="success-message" id="success-message">Đã sao chép mã giảm giá!</div>
+    
     <header>
+        <div class="header-top">
+            <div class="container">
+                <h1>Mã Giảm Giá Shopee - Tổng Hợp Voucher Mới Nhất</h1>
+            </div>
+        </div>
         <div class="container">
-            <h1>Voucher Shopee</h1>
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Tìm kiếm voucher...">
+            <div class="header-nav">
+                <div class="brand">
+                    <img src="https://i.ibb.co/6BSfNcF/shopee-logo.png" alt="Shopee Logo">
+                    <span>VOUCHER SHOPEE</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Tìm kiếm mã giảm giá...">
+                    <i class="fas fa-search"></i>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <div class="filter-tabs" id="filter-tabs">
-            <div class="filter-tab active" data-category="all">Tất cả</div>
-            <div class="filter-tab" data-category="freeship">Freeship</div>
-            <div class="filter-tab" data-category="discount">Giảm giá</div>
-            <div class="filter-tab" data-category="cashback">Hoàn xu</div>
-            <div class="filter-tab" data-category="other">Khác</div>
+        <div class="store-banner">
+            <img src="https://i.ibb.co/SQZLyJ9/shopee-banner.jpg" alt="Shopee Banner">
+        </div>
+        
+        <div class="categories" id="categories">
+            <div class="category-item active" data-category="all">Tất cả</div>
+            <div class="category-item" data-category="freeship">Freeship</div>
+            <div class="category-item" data-category="discount">Giảm giá</div>
+            <div class="category-item" data-category="cashback">Hoàn xu</div>
+            <div class="category-item" data-category="other">Khác</div>
         </div>
         
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p>Đang tải vouchers...</p>
+            <p>Đang tải mã giảm giá...</p>
         </div>
         
-        <div class="vouchers" id="vouchers">
-            <!-- Vouchers will be inserted here -->
-        </div>
+        <section id="freeship-section">
+            <h2 class="section-title"><i class="fas fa-shipping-fast"></i> Mã Freeship</h2>
+            <div class="vouchers-grid" id="freeship-vouchers"></div>
+        </section>
         
-        <div id="status-message" class="status-message" style="display: none;"></div>
+        <section id="discount-section">
+            <h2 class="section-title"><i class="fas fa-tags"></i> Mã Giảm Giá</h2>
+            <div class="vouchers-grid" id="discount-vouchers"></div>
+        </section>
+        
+        <section id="cashback-section">
+            <h2 class="section-title"><i class="fas fa-coins"></i> Mã Hoàn Xu</h2>
+            <div class="vouchers-grid" id="cashback-vouchers"></div>
+        </section>
+        
+        <section id="other-section">
+            <h2 class="section-title"><i class="fas fa-gift"></i> Voucher Khác</h2>
+            <div class="vouchers-grid" id="other-vouchers"></div>
+        </section>
     </main>
-
-    <div id="success-message" class="success-message">Đã copy mã voucher!</div>
 
     <footer>
         <div class="container">
-            <p>Dữ liệu được lấy từ <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Docs</a> | Cập nhật: <span id="last-updated">04/04/2025</span></p>
-            <p>© 2025 Voucher Shopee | <a href="https://github.com/diepvantien/Voucher-Shopee" target="_blank">GitHub</a></p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <ul>
+                        <li><a href="#">Hướng dẫn sử dụng</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cửa hàng khác</h3>
+                    <ul>
+                        <li><a href="#">Lazada</a></li>
+                        <li><a href="#">Tiki</a></li>
+                        <li><a href="#">Sendo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Voucher Shopee | Dữ liệu được cập nhật từ <a href="https://docs.google.com/document/d/1KZCnfEoQ4zpFv9tqO5Z625kBiw5KGQfGKhVyoZeb13w/edit?usp=sharing" target="_blank">Google Docs</a> | <a href="https://github.com/diepvantien/Voucher-Shopee" target="_blank">GitHub</a></p>
+                <p id="last-updated">Cập nhật lần cuối: 04/04/2025</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Dữ liệu voucher được nhúng trực tiếp - với các link affiliate ngắn gọn đúng định dạng
+        // Dữ liệu voucher với URL affiliate ngắn gọn
         const VOUCHERS_DATA = [
             // Freeship vouchers
             {
                 code: "MYFS50425",
                 title: "Freeship 15K",
-                description: "Đơn hàng từ 0Đ",
+                description: "Đơn hàng từ 0Đ, giảm 15K phí vận chuyển cho tất cả đơn hàng",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "30/04/2025",
-                affiliate: "https://s.shopee.vn/qVtsbRqMc"
+                affiliate: "https://s.shopee.vn/qVtsbRqMc",
+                minOrder: "0Đ",
+                image: "https://i.ibb.co/MkMxQKm/freeship-badge.jpg"
             },
             {
                 code: "SHOPEEFREESHIP",
                 title: "Freeship Extra 70K",
-                description: "Giảm 70K phí vận chuyển",
+                description: "Giảm tới 70K phí vận chuyển cho đơn hàng từ 150K",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "30/04/2025",
                 minOrder: "150K",
-                affiliate: "https://s.shopee.vn/aKyzKotki"
+                affiliate: "https://s.shopee.vn/aKyzKotki",
+                image: "https://i.ibb.co/MkMxQKm/freeship-badge.jpg"
             },
             {
                 code: "FREESHIP0D04",
                 title: "Freeship 0Đ",
-                description: "Giảm 100% phí vận chuyển tối đa 25K",
+                description: "Giảm 100% phí vận chuyển tối đa 25K cho tất cả sản phẩm",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "15/04/2025",
                 minOrder: "50K",
-                affiliate: "https://s.shopee.vn/RjmJkYVVP"
+                affiliate: "https://s.shopee.vn/RjmJkYVVP",
+                image: "https://i.ibb.co/MkMxQKm/freeship-badge.jpg"
             },
             {
                 code: "CB25FREE425",
                 title: "Freeship Xtra",
-                description: "Freeship cho đơn hàng từ 0Đ",
+                description: "Freeship cho đơn hàng từ 0Đ, áp dụng cho tất cả sản phẩm",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "30/04/2025",
-                affiliate: "https://s.shopee.vn/wJMvMhLCc"
+                affiliate: "https://s.shopee.vn/wJMvMhLCc",
+                minOrder: "0Đ",
+                image: "https://i.ibb.co/MkMxQKm/freeship-badge.jpg"
             },
             {
                 code: "FSMALL0D",
                 title: "Freeship Mall 0Đ",
-                description: "Miễn phí vận chuyển cho đơn hàng Shopee Mall",
+                description: "Miễn phí vận chuyển cho đơn hàng Shopee Mall từ 300K",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "15/04/2025",
                 minOrder: "300K",
-                affiliate: "https://s.shopee.vn/hkYhSyCVL"
+                affiliate: "https://s.shopee.vn/hkYhSyCVL",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             
             // Discount vouchers
             {
                 code: "CPNEW50",
                 title: "Giảm 50K",
-                description: "Dành cho người dùng mới",
+                description: "Dành cho người dùng mới, giảm 50K cho đơn hàng từ 150K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "31/05/2025",
                 minOrder: "150K",
-                affiliate: "https://s.shopee.vn/cPiKfDEjs"
+                affiliate: "https://s.shopee.vn/cPiKfDEjs",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             {
                 code: "CPNEW25",
                 title: "Giảm 25K",
-                description: "Dành cho người dùng mới",
+                description: "Dành cho người dùng mới, giảm 25K cho đơn hàng từ 50K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "31/05/2025",
                 minOrder: "50K",
-                affiliate: "https://s.shopee.vn/KfXHTLLjG"
+                affiliate: "https://s.shopee.vn/KfXHTLLjG",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             {
                 code: "NEWMALL25",
                 title: "Giảm 25K đơn Shopee Mall",
-                description: "Áp dụng cho sản phẩm tại Shopee Mall",
+                description: "Áp dụng cho sản phẩm tại Shopee Mall, đơn tối thiểu 250K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "30/04/2025",
                 minOrder: "250K",
-                affiliate: "https://s.shopee.vn/qLEHnaeGL"
+                affiliate: "https://s.shopee.vn/qLEHnaeGL",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             {
                 code: "MALLCT100",
                 title: "Giảm 100K đơn Shopee Mall",
-                description: "Áp dụng cho sản phẩm tại Shopee Mall",
+                description: "Áp dụng cho sản phẩm tại Shopee Mall, đơn tối thiểu 1000K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "15/04/2025",
                 minOrder: "1000K",
-                affiliate: "https://s.shopee.vn/jJhKumYFm"
+                affiliate: "https://s.shopee.vn/jJhKumYFm",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             {
                 code: "SPPFOOD40",
                 title: "Giảm 40K ShopeeFood",
-                description: "Đặt món từ ShopeeFood",
+                description: "Đặt món từ ShopeeFood, giảm 40K cho đơn từ 120K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "15/04/2025",
                 minOrder: "120K",
-                affiliate: "https://s.shopee.vn/xVtEksPQs"
+                affiliate: "https://s.shopee.vn/xVtEksPQs",
+                image: "https://i.ibb.co/yYqLt0b/shopee-food.jpg"
             },
             {
                 code: "TOANCAU8K4",
                 title: "Giảm 8K đơn hàng quốc tế",
-                description: "Áp dụng cho đơn hàng quốc tế",
+                description: "Áp dụng cho đơn hàng quốc tế, giảm 8K cho đơn từ 50K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "10/04/2025",
                 minOrder: "50K",
-                affiliate: "https://s.shopee.vn/mGjAYYdVH"
+                affiliate: "https://s.shopee.vn/mGjAYYdVH",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             {
                 code: "NEWTOALL",
                 title: "Voucher toàn sàn",
-                description: "Giảm 10% tối đa 100K",
+                description: "Giảm 10% tối đa 100K cho tất cả sản phẩm trên Shopee",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "20/04/2025",
                 minOrder: "500K",
-                affiliate: "https://s.shopee.vn/tFwPJZRZq"
+                affiliate: "https://s.shopee.vn/tFwPJZRZq",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             {
                 code: "SHOPEE4ALL",
                 title: "Giảm 20K cho đơn hàng",
-                description: "Áp dụng cho tất cả sản phẩm",
+                description: "Áp dụng cho tất cả sản phẩm, đơn tối thiểu 100K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "30/04/2025",
                 minOrder: "100K",
-                affiliate: "https://s.shopee.vn/fVAvHTVsk"
+                affiliate: "https://s.shopee.vn/fVAvHTVsk",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             {
                 code: "SIEUTHI100K",
                 title: "Giảm 100K Siêu thị",
-                description: "Áp dụng cho đơn hàng Siêu Thị Shopee",
+                description: "Áp dụng cho đơn hàng Siêu Thị Shopee từ 500K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "15/04/2025",
                 minOrder: "500K",
-                affiliate: "https://s.shopee.vn/aBfLpWhwA"
+                affiliate: "https://s.shopee.vn/aBfLpWhwA",
+                image: "https://i.ibb.co/YLBZgG8/shopee-supermarket.jpg"
             },
             {
                 code: "MALL88K04",
                 title: "Giảm 88K cho Shopee Mall",
-                description: "Áp dụng cho sản phẩm Shopee Mall",
+                description: "Áp dụng cho sản phẩm Shopee Mall, đơn từ 500K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "08/04/2025",
                 minOrder: "500K",
-                affiliate: "https://s.shopee.vn/bYAXxZUcx"
+                affiliate: "https://s.shopee.vn/bYAXxZUcx",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             {
                 code: "MKT150K425",
                 title: "Giảm 150K cho Shopee Mall",
-                description: "Đơn hàng Shopee Mall từ 1.5 triệu",
+                description: "Đơn hàng Shopee Mall từ 1.5 triệu, giảm 150K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "30/04/2025",
                 minOrder: "1.5 triệu",
-                affiliate: "https://s.shopee.vn/pAvSdcDGZ"
+                affiliate: "https://s.shopee.vn/pAvSdcDGZ",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             {
                 code: "BRANDSP88K",
                 title: "Giảm 88K Thương hiệu",
-                description: "Áp dụng cho các thương hiệu chính hãng",
+                description: "Áp dụng cho các thương hiệu chính hãng, đơn từ 400K",
                 category: "discount",
                 type: "Giảm giá",
                 validUntil: "10/04/2025",
                 minOrder: "400K",
-                affiliate: "https://s.shopee.vn/mVDQRcCkf"
+                affiliate: "https://s.shopee.vn/mVDQRcCkf",
+                image: "https://i.ibb.co/9gLnT7v/discount-badge.jpg"
             },
             
             // Cashback vouchers
             {
                 code: "ELMTCB10",
                 title: "Hoàn 10% xu",
-                description: "Áp dụng cho đơn hàng Shopee Mall",
+                description: "Áp dụng cho đơn hàng Shopee Mall, tối đa 100K xu",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "15/04/2025",
                 minOrder: "500K",
-                affiliate: "https://s.shopee.vn/vSJGVWFwX"
+                affiliate: "https://s.shopee.vn/vSJGVWFwX",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             {
                 code: "SPPCOINELM",
                 title: "Hoàn 100K xu",
-                description: "Lần đầu thanh toán qua ví SPayLater",
+                description: "Lần đầu thanh toán qua ví SPayLater, hoàn 100K xu",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "10/04/2025",
-                affiliate: "https://s.shopee.vn/qWsHyKdHj"
+                affiliate: "https://s.shopee.vn/qWsHyKdHj",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             {
                 code: "SPPCOIN88",
                 title: "Hoàn 15% xu",
-                description: "Tối đa 70K, đơn tối thiểu 300K",
+                description: "Tối đa 70K, đơn tối thiểu 300K, hoàn xu vào ví Shopee",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "30/04/2025",
                 minOrder: "300K",
-                affiliate: "https://s.shopee.vn/cDpXxkbBm"
+                affiliate: "https://s.shopee.vn/cDpXxkbBm",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             {
                 code: "SPPCOIN25K",
                 title: "Hoàn 25K xu",
-                description: "Cho đơn hàng đầu tiên",
+                description: "Cho đơn hàng đầu tiên từ 150K, hoàn 25K xu",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "30/04/2025",
                 minOrder: "150K",
-                affiliate: "https://s.shopee.vn/rHmGaVJbY"
+                affiliate: "https://s.shopee.vn/rHmGaVJbY",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             {
                 code: "TAINAPXU",
                 title: "Hoàn 20K xu khi tải app",
-                description: "Dành cho người dùng mới tải app",
+                description: "Dành cho người dùng mới tải app Shopee, hoàn 20K xu",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "30/04/2025",
-                affiliate: "https://s.shopee.vn/yWaQwXCzk"
+                affiliate: "https://s.shopee.vn/yWaQwXCzk",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             {
                 code: "HOANHUNG",
                 title: "Hoàn 100K xu",
-                description: "Cho người dùng VIP",
+                description: "Cho người dùng VIP, hoàn 100K xu cho đơn từ 1 triệu",
                 category: "cashback",
                 type: "Hoàn xu",
                 validUntil: "30/04/2025",
                 minOrder: "1 triệu",
-                affiliate: "https://s.shopee.vn/kYhPpMqQn"
+                affiliate: "https://s.shopee.vn/kYhPpMqQn",
+                image: "https://i.ibb.co/gDdKY0p/cashback-badge.jpg"
             },
             
             // Other vouchers
@@ -847,243 +822,317 @@
                 type: "Combo",
                 validUntil: "15/04/2025",
                 minOrder: "200K",
-                affiliate: "https://s.shopee.vn/rAsSvPqMs"
+                affiliate: "https://s.shopee.vn/rAsSvPqMs",
+                image: "https://i.ibb.co/sQSJVmY/shopee-voucher.jpg"
             },
             {
                 code: "DOISOAT88",
                 title: "Combo Shopee Mall",
-                description: "Đồng kiểm + Hoàn xu 10%",
+                description: "Đồng kiểm + Hoàn xu 10% cho đơn hàng từ Shopee Mall",
                 category: "other",
                 type: "Đồng kiểm",
                 validUntil: "30/04/2025",
                 minOrder: "500K",
-                affiliate: "https://s.shopee.vn/uYhSdCvBp"
+                affiliate: "https://s.shopee.vn/uYhSdCvBp",
+                image: "https://i.ibb.co/g73J9Rh/shopee-mall.jpg"
             },
             {
                 code: "HBSP0425",
                 title: "Quà tặng",
-                description: "Tặng thêm quà cho đơn từ thương hiệu cao cấp",
+                description: "Tặng thêm quà cho đơn từ thương hiệu cao cấp từ 1 triệu",
                 category: "other",
                 type: "Quà tặng",
                 validUntil: "30/04/2025",
                 minOrder: "1 triệu",
-                affiliate: "https://s.shopee.vn/sAeVgBnTm"
+                affiliate: "https://s.shopee.vn/sAeVgBnTm",
+                image: "https://i.ibb.co/sQSJVmY/shopee-voucher.jpg"
             },
             {
                 code: "SPPMKTPLACE",
                 title: "Combo ưu đãi",
-                description: "Freeship + Hoàn xu",
+                description: "Freeship + Hoàn xu cho tất cả sản phẩm trên Shopee",
                 category: "other",
                 type: "Combo",
                 validUntil: "30/04/2025",
                 minOrder: "0Đ",
-                affiliate: "https://s.shopee.vn/pQjHkXcSd"
+                affiliate: "https://s.shopee.vn/pQjHkXcSd",
+                image: "https://i.ibb.co/sQSJVmY/shopee-voucher.jpg"
             }
         ];
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the application
+            // Khởi tạo ứng dụng
             initApp();
             
-            // Set current date on footer
+            // Cập nhật ngày hiện tại
             const today = new Date();
-            document.getElementById('last-updated').textContent = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
+            document.getElementById('last-updated').textContent = `Cập nhật lần cuối: ${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
         });
 
         async function initApp() {
             try {
                 // Hiển thị loading
-                const loadingElement = document.getElementById('loading');
-                loadingElement.style.display = 'flex';
+                document.getElementById('loading').style.display = 'flex';
+                document.getElementById('freeship-section').style.display = 'none';
+                document.getElementById('discount-section').style.display = 'none';
+                document.getElementById('cashback-section').style.display = 'none';
+                document.getElementById('other-section').style.display = 'none';
                 
-                // Dùng dữ liệu có sẵn
+                // Sử dụng dữ liệu có sẵn
                 const vouchers = VOUCHERS_DATA;
                 
-                // Save vouchers for filtering
+                // Lưu trữ vouchers cho tìm kiếm và lọc
                 window.allVouchers = vouchers;
                 
-                // Display vouchers
-                displayVouchers(vouchers);
+                // Phân loại và hiển thị vouchers
+                categorizeAndDisplayVouchers(vouchers);
                 
-                // Set up search and filtering
-                setupSearchAndFilter();
+                // Thiết lập tìm kiếm
+                setupSearch();
                 
-                // Set up filter tabs
-                setupFilterTabs();
-            } catch (error) {
-                console.error('Error initializing app:', error);
+                // Thiết lập lọc danh mục
+                setupCategoryFilter();
+                
+                // Ẩn loading
                 document.getElementById('loading').style.display = 'none';
-                document.getElementById('status-message').textContent = `Lỗi tải mã voucher: ${error.message}`;
-                document.getElementById('status-message').style.display = 'block';
+                document.getElementById('freeship-section').style.display = 'block';
+                document.getElementById('discount-section').style.display = 'block';
+                document.getElementById('cashback-section').style.display = 'block';
+                document.getElementById('other-section').style.display = 'block';
+            } catch (error) {
+                console.error('Lỗi khởi tạo ứng dụng:', error);
+                document.getElementById('loading').innerHTML = `
+                    <p>Lỗi tải mã giảm giá. Vui lòng thử lại sau.</p>
+                    <p>Chi tiết lỗi: ${error.message}</p>
+                `;
             }
         }
 
-        function displayVouchers(vouchers) {
-            const vouchersContainer = document.getElementById('vouchers');
-            const loadingElement = document.getElementById('loading');
-            const statusElement = document.getElementById('status-message');
+        function categorizeAndDisplayVouchers(vouchers) {
+            const freeshipVouchers = vouchers.filter(v => v.category === 'freeship');
+            const discountVouchers = vouchers.filter(v => v.category === 'discount');
+            const cashbackVouchers = vouchers.filter(v => v.category === 'cashback');
+            const otherVouchers = vouchers.filter(v => v.category === 'other');
             
-            // Hide loading indicator
-            loadingElement.style.display = 'none';
+            displayVouchersInSection('freeship-vouchers', freeshipVouchers);
+            displayVouchersInSection('discount-vouchers', discountVouchers);
+            displayVouchersInSection('cashback-vouchers', cashbackVouchers);
+            displayVouchersInSection('other-vouchers', otherVouchers);
+        }
+
+        function displayVouchersInSection(sectionId, vouchers) {
+            const container = document.getElementById(sectionId);
+            container.innerHTML = '';
             
-            // Clear any existing content
-            vouchersContainer.innerHTML = '';
-            
-            if (!vouchers || vouchers.length === 0) {
-                statusElement.textContent = 'Không tìm thấy voucher nào phù hợp.';
-                statusElement.style.display = 'block';
+            if (vouchers.length === 0) {
+                container.innerHTML = '<p class="empty-message">Không có mã giảm giá nào trong danh mục này.</p>';
                 return;
-            } else {
-                statusElement.style.display = 'none';
             }
             
-            // Create and append voucher cards
             vouchers.forEach(voucher => {
-                const voucherCard = createVoucherCard(voucher);
-                vouchersContainer.appendChild(voucherCard);
+                const voucherElement = createVoucherElement(voucher);
+                container.appendChild(voucherElement);
             });
-            
-            // Set up buttons
-            setupCopyButtons();
-            setupUseNowButtons();
         }
 
-        function createVoucherCard(voucher) {
-            const card = document.createElement('div');
-            card.className = 'voucher-card';
-            card.setAttribute('data-category', voucher.category || 'other');
+        function createVoucherElement(voucher) {
+            const voucherItem = document.createElement('div');
+            voucherItem.className = 'voucher-item';
+            voucherItem.dataset.category = voucher.category;
             
-            card.innerHTML = `
-                <div class="voucher-header">${voucher.type || 'Voucher'}</div>
-                <div class="voucher-body">
-                    <h2 class="voucher-title">${escapeHTML(voucher.title)}</h2>
-                    ${voucher.description ? `<p class="voucher-description">${escapeHTML(voucher.description)}</p>` : ''}
-                    
-                    ${voucher.code ? `
-                    <div class="copy-code">
-                        <div class="code">${voucher.code}</div>
-                    </div>
-                    <div class="button-container">
-                        <button class="copy-btn" data-code="${voucher.code}">Copy</button>
-                        <button class="use-now-btn" data-code="${voucher.code}" data-link="${voucher.affiliate || ''}">Dùng Ngay</button>
-                    </div>
-                    ` : ''}
+            const expiryDate = new Date(voucher.validUntil.split('/').reverse().join('/'));
+            const today = new Date();
+            const daysLeft = Math.ceil((expiryDate - today) / (1000 * 60 * 60 * 24));
+            
+            voucherItem.innerHTML = `
+                <div class="voucher-top">
+                    <img src="${voucher.image || 'https://i.ibb.co/sQSJVmY/shopee-voucher.jpg'}" alt="${voucher.title}" class="voucher-image">
+                    <div class="voucher-tag">${voucher.type}</div>
+                </div>
+                <div class="voucher-content">
+                    <h3 class="voucher-title">${escapeHTML(voucher.title)}</h3>
+                    <p class="voucher-description">${escapeHTML(voucher.description)}</p>
                     
                     <div class="voucher-meta">
-                        ${voucher.validUntil ? `<span>HSD: ${voucher.validUntil}</span>` : '<span>Không thời hạn</span>'}
-                        ${voucher.minOrder ? `<span>Đơn tối thiểu: ${voucher.minOrder}</span>` : ''}
+                        ${voucher.validUntil ? `
+                        <div>
+                            <i class="far fa-clock"></i> 
+                            Hạn dùng: ${voucher.validUntil} 
+                            ${daysLeft > 0 ? `(Còn ${daysLeft} ngày)` : '(Hết hạn)'}
+                        </div>` : ''}
+                        
+                        ${voucher.minOrder ? `
+                        <div>
+                            <i class="fas fa-shopping-cart"></i> 
+                            Đơn tối thiểu: ${voucher.minOrder}
+                        </div>` : ''}
+                    </div>
+                    
+                    <div class="voucher-code" data-code="${voucher.code}">
+                        ${voucher.code}
+                        <span class="copied-text">Đã sao chép!</span>
+                    </div>
+                    
+                    <div class="voucher-buttons">
+                        <button class="btn btn-copy" data-code="${voucher.code}">
+                            <i class="far fa-copy"></i> Sao chép
+                        </button>
+                        <a href="${voucher.affiliate}" target="_blank" class="btn btn-use">
+                            <i class="fas fa-external-link-alt"></i> Dùng ngay
+                        </a>
                     </div>
                 </div>
             `;
             
-            return card;
+            // Thiết lập sự kiện sao chép mã
+            const voucherCode = voucherItem.querySelector('.voucher-code');
+            const copyBtn = voucherItem.querySelector('.btn-copy');
+            
+            voucherCode.addEventListener('click', function() {
+                copyVoucherCode(this.dataset.code, this.querySelector('.copied-text'));
+            });
+            
+            copyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                copyVoucherCode(this.dataset.code);
+            });
+            
+            return voucherItem;
         }
 
-        function setupCopyButtons() {
-            document.querySelectorAll('.copy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const code = this.getAttribute('data-code');
-                    navigator.clipboard.writeText(code)
-                        .then(() => {
-                            // Show success message
-                            const successMessage = document.getElementById('success-message');
-                            successMessage.textContent = 'Đã copy mã voucher!';
-                            successMessage.style.animation = 'none';
-                            successMessage.offsetHeight; // Trigger reflow
-                            successMessage.style.animation = 'fadeInOut 2s forwards';
-                            
-                            // Change button text temporarily
-                            const originalText = this.textContent;
-                            this.textContent = 'Đã copy!';
-                            setTimeout(() => {
-                                this.textContent = originalText;
-                            }, 1500);
-                        })
-                        .catch(err => {
-                            console.error('Failed to copy code:', err);
-                            alert(`Không thể copy mã: ${code}\nVui lòng copy thủ công.`);
-                        });
-                });
-            });
-        }
-        
-        function setupUseNowButtons() {
-            document.querySelectorAll('.use-now-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const link = this.getAttribute('data-link');
-                    
-                    // Show success message
-                    const successMessage = document.getElementById('success-message');
-                    successMessage.textContent = 'Đang chuyển đến Shopee...';
-                    successMessage.style.animation = 'none';
-                    successMessage.offsetHeight; // Trigger reflow
-                    successMessage.style.animation = 'fadeInOut 2s forwards';
-                    
-                    // Chuyển đến link affiliate của Shopee
+        function copyVoucherCode(code, copiedElement = null) {
+            navigator.clipboard.writeText(code).then(() => {
+                // Hiển thị thông báo
+                const successMessage = document.getElementById('success-message');
+                successMessage.textContent = `Đã sao chép mã: ${code}`;
+                successMessage.style.display = 'block';
+                
+                // Hiển thị "Đã sao chép" trên phần tử cụ thể nếu có
+                if (copiedElement) {
+                    copiedElement.style.display = 'block';
                     setTimeout(() => {
-                        if (link && link !== '') {
-                            window.open(link, '_blank');
-                        } else {
-                            // Fallback nếu không có link
-                            const code = this.getAttribute('data-code');
-                            window.open(`https://shopee.vn/search?promotionId=${code}`, '_blank');
-                        }
-                    }, 500);
-                });
+                        copiedElement.style.display = 'none';
+                    }, 2000);
+                }
+                
+                // Ẩn thông báo sau 2 giây
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Không thể sao chép mã:', err);
+                alert(`Không thể sao chép mã: ${code}\nVui lòng sao chép thủ công.`);
             });
         }
 
-        function setupSearchAndFilter() {
-            const searchInput = document.getElementById('search');
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
             
-            function applyFilters() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
-                const activeCategory = document.querySelector('.filter-tab.active').getAttribute('data-category');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
                 
-                let filteredVouchers = window.allVouchers;
-                
-                // Apply category filter
-                if (activeCategory !== 'all') {
-                    filteredVouchers = filteredVouchers.filter(voucher => 
-                        voucher.category && voucher.category === activeCategory
-                    );
+                if (searchTerm === '') {
+                    // Hiển thị lại tất cả mục
+                    document.getElementById('freeship-section').style.display = 'block';
+                    document.getElementById('discount-section').style.display = 'block';
+                    document.getElementById('cashback-section').style.display = 'block';
+                    document.getElementById('other-section').style.display = 'block';
+                    categorizeAndDisplayVouchers(window.allVouchers);
+                    return;
                 }
                 
-                // Apply search term
-                if (searchTerm) {
-                    filteredVouchers = filteredVouchers.filter(voucher => 
-                        (voucher.title && voucher.title.toLowerCase().includes(searchTerm)) ||
-                        (voucher.description && voucher.description.toLowerCase().includes(searchTerm)) ||
-                        (voucher.code && voucher.code.toLowerCase().includes(searchTerm))
-                    );
+                // Lọc vouchers theo từ khóa
+                const filteredVouchers = window.allVouchers.filter(voucher => 
+                    (voucher.title && voucher.title.toLowerCase().includes(searchTerm)) ||
+                    (voucher.description && voucher.description.toLowerCase().includes(searchTerm)) ||
+                    (voucher.code && voucher.code.toLowerCase().includes(searchTerm))
+                );
+                
+                // Ẩn các section
+                document.getElementById('freeship-section').style.display = 'none';
+                document.getElementById('discount-section').style.display = 'none';
+                document.getElementById('cashback-section').style.display = 'none';
+                document.getElementById('other-section').style.display = 'none';
+                
+                // Hiển thị kết quả tìm kiếm phân loại theo danh mục
+                const freeshipResults = filteredVouchers.filter(v => v.category === 'freeship');
+                const discountResults = filteredVouchers.filter(v => v.category === 'discount');
+                const cashbackResults = filteredVouchers.filter(v => v.category === 'cashback');
+                const otherResults = filteredVouchers.filter(v => v.category === 'other');
+                
+                // Chỉ hiển thị các section có kết quả
+                if (freeshipResults.length > 0) {
+                    document.getElementById('freeship-section').style.display = 'block';
+                    displayVouchersInSection('freeship-vouchers', freeshipResults);
                 }
                 
-                displayVouchers(filteredVouchers);
-            }
-            
-            searchInput.addEventListener('input', applyFilters);
+                if (discountResults.length > 0) {
+                    document.getElementById('discount-section').style.display = 'block';
+                    displayVouchersInSection('discount-vouchers', discountResults);
+                }
+                
+                if (cashbackResults.length > 0) {
+                    document.getElementById('cashback-section').style.display = 'block';
+                    displayVouchersInSection('cashback-vouchers', cashbackResults);
+                }
+                
+                if (otherResults.length > 0) {
+                    document.getElementById('other-section').style.display = 'block';
+                    displayVouchersInSection('other-vouchers', otherResults);
+                }
+                
+                // Hiển thị thông báo nếu không có kết quả
+                if (filteredVouchers.length === 0) {
+                    document.getElementById('freeship-section').style.display = 'block';
+                    document.getElementById('freeship-vouchers').innerHTML = 
+                        '<p class="empty-message">Không tìm thấy mã giảm giá nào phù hợp với từ khóa "' + searchTerm + '"</p>';
+                    
+                    document.getElementById('discount-section').style.display = 'none';
+                    document.getElementById('cashback-section').style.display = 'none';
+                    document.getElementById('other-section').style.display = 'none';
+                }
+            });
         }
 
-        function setupFilterTabs() {
-            const tabs = document.querySelectorAll('.filter-tab');
+        function setupCategoryFilter() {
+            const categoryItems = document.querySelectorAll('.category-item');
             
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    // Remove active class from all tabs
-                    tabs.forEach(t => t.classList.remove('active'));
+            categoryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Xóa active khỏi tất cả items
+                    categoryItems.forEach(c => c.classList.remove('active'));
                     
-                    // Add active class to clicked tab
+                    // Thêm active cho item được chọn
                     this.classList.add('active');
                     
-                    // Apply filters
-                    const searchInput = document.getElementById('search');
-                    const event = new Event('input', { bubbles: true });
-                    searchInput.dispatchEvent(event);
+                    const category = this.dataset.category;
+                    
+                    if (category === 'all') {
+                        // Hiển thị tất cả danh mục
+                        document.getElementById('freeship-section').style.display = 'block';
+                        document.getElementById('discount-section').style.display = 'block';
+                        document.getElementById('cashback-section').style.display = 'block';
+                        document.getElementById('other-section').style.display = 'block';
+                        categorizeAndDisplayVouchers(window.allVouchers);
+                    } else {
+                        // Lọc vouchers theo danh mục
+                        const filteredVouchers = window.allVouchers.filter(v => v.category === category);
+                        
+                        // Ẩn tất cả sections
+                        document.getElementById('freeship-section').style.display = 'none';
+                        document.getElementById('discount-section').style.display = 'none';
+                        document.getElementById('cashback-section').style.display = 'none';
+                        document.getElementById('other-section').style.display = 'none';
+                        
+                        // Hiển thị section tương ứng
+                        document.getElementById(`${category}-section`).style.display = 'block';
+                        displayVouchersInSection(`${category}-vouchers`, filteredVouchers);
+                    }
                 });
             });
         }
 
-        // Helper function to escape HTML to prevent XSS
+        // Helper function to escape HTML
         function escapeHTML(str) {
             if (!str) return '';
             
