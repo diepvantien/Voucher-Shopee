@@ -21,6 +21,9 @@
             --discount-color: #e91e63;
             --cashback-color: #ff9800;
             --other-color: #9c27b0;
+            --button-hover: #d23f21;
+            --use-now-color: #4CAF50;
+            --use-now-hover: #388E3C;
         }
 
         * {
@@ -264,12 +267,19 @@
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>');
         }
 
+        .voucher-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
         .copy-code {
             display: flex;
             margin-top: 15px;
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            width: 100%;
         }
 
         .code {
@@ -287,17 +297,38 @@
             color: var(--text-color);
         }
 
-        .copy-btn {
-            background: var(--primary-color);
-            color: white;
+        .button-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .copy-btn, .use-now-btn {
+            padding: 0 15px;
             border: none;
-            padding: 0 20px;
-            border-radius: 0 6px 6px 0;
             cursor: pointer;
-            transition: background 0.3s ease;
             font-weight: 600;
             position: relative;
             overflow: hidden;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 6px 0 0 6px;
+            flex: 1;
+        }
+
+        .use-now-btn {
+            background: var(--use-now-color);
+            color: white;
+            border-radius: 0 6px 6px 0;
+            flex: 1;
         }
 
         .voucher-card[data-category="freeship"] .copy-btn {
@@ -313,14 +344,18 @@
         }
 
         .copy-btn:hover {
-            opacity: 0.9;
+            background: var(--button-hover);
         }
 
-        .copy-btn:active {
+        .use-now-btn:hover {
+            background: var(--use-now-hover);
+        }
+
+        .copy-btn:active, .use-now-btn:active {
             transform: scale(0.98);
         }
 
-        .copy-btn::after {
+        .copy-btn::after, .use-now-btn::after {
             content: "";
             position: absolute;
             top: 50%;
@@ -333,7 +368,7 @@
             transition: transform 0.3s ease-out;
         }
 
-        .copy-btn:active::after {
+        .copy-btn:active::after, .use-now-btn:active::after {
             transform: translate(-50%, -50%) scale(1);
             opacity: 0;
         }
@@ -472,6 +507,15 @@
                 padding: 6px 14px;
                 font-size: 14px;
             }
+            
+            .button-container {
+                flex-direction: column;
+            }
+            
+            .copy-btn, .use-now-btn {
+                width: 100%;
+                border-radius: 6px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -560,10 +604,11 @@
     </footer>
 
     <script>
-        // Dữ liệu voucher được nhúng trực tiếp
+        // Dữ liệu voucher được nhúng trực tiếp - mở rộng từ file gốc Google Docs
         const VOUCHERS_DATA = [
+            // Freeship vouchers
             {
-                code: "GOFREE25425",
+                code: "MYFS50425",
                 title: "Freeship 15K",
                 description: "Đơn hàng từ 0Đ",
                 category: "freeship",
@@ -571,14 +616,42 @@
                 validUntil: "30/04/2025"
             },
             {
-                code: "GOFREE25424",
-                title: "Freeship Extra",
+                code: "SHOPEEFREESHIP",
+                title: "Freeship Extra 70K",
                 description: "Giảm 70K phí vận chuyển",
                 category: "freeship",
                 type: "Freeship",
                 validUntil: "30/04/2025",
                 minOrder: "150K"
             },
+            {
+                code: "FREESHIP0D04",
+                title: "Freeship 0Đ",
+                description: "Giảm 100% phí vận chuyển tối đa 25K",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "15/04/2025",
+                minOrder: "50K"
+            },
+            {
+                code: "CB25FREE425",
+                title: "Freeship Xtra",
+                description: "Freeship cho đơn hàng từ 0Đ",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "30/04/2025"
+            },
+            {
+                code: "FSMALL0D",
+                title: "Freeship Mall 0Đ",
+                description: "Miễn phí vận chuyển cho đơn hàng Shopee Mall",
+                category: "freeship",
+                type: "Freeship",
+                validUntil: "15/04/2025",
+                minOrder: "300K"
+            },
+            
+            // Discount vouchers
             {
                 code: "CPNEW50",
                 title: "Giảm 50K",
@@ -598,23 +671,6 @@
                 minOrder: "50K"
             },
             {
-                code: "ELMTCB10",
-                title: "Hoàn 10% xu",
-                description: "Áp dụng cho đơn hàng Shopee Mall",
-                category: "cashback",
-                type: "Hoàn xu",
-                validUntil: "15/04/2025",
-                minOrder: "500K"
-            },
-            {
-                code: "SPPCOINELM",
-                title: "Hoàn 100K xu",
-                description: "Lần đầu thanh toán qua ví SPayLater",
-                category: "cashback",
-                type: "Hoàn xu",
-                validUntil: "10/04/2025"
-            },
-            {
                 code: "NEWMALL25",
                 title: "Giảm 25K đơn Shopee Mall",
                 description: "Áp dụng cho sản phẩm tại Shopee Mall",
@@ -622,15 +678,6 @@
                 type: "Giảm giá",
                 validUntil: "30/04/2025",
                 minOrder: "250K"
-            },
-            {
-                code: "SPPCOIN88",
-                title: "Hoàn 15% xu",
-                description: "Tối đa 70K, đơn tối thiểu 300K",
-                category: "cashback",
-                type: "Hoàn xu",
-                validUntil: "30/04/2025",
-                minOrder: "300K"
             },
             {
                 code: "MALLCT100",
@@ -678,13 +725,68 @@
                 minOrder: "100K"
             },
             {
-                code: "FREESHIP0D04",
-                title: "Freeship 0Đ",
-                description: "Giảm 100% phí vận chuyển tối đa 25K",
-                category: "freeship",
-                type: "Freeship",
+                code: "SIEUTHI100K",
+                title: "Giảm 100K Siêu thị",
+                description: "Áp dụng cho đơn hàng Siêu Thị Shopee",
+                category: "discount",
+                type: "Giảm giá",
                 validUntil: "15/04/2025",
-                minOrder: "50K"
+                minOrder: "500K"
+            },
+            {
+                code: "MALL88K04",
+                title: "Giảm 88K cho Shopee Mall",
+                description: "Áp dụng cho sản phẩm Shopee Mall",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "08/04/2025",
+                minOrder: "500K"
+            },
+            {
+                code: "MKT150K425",
+                title: "Giảm 150K cho Shopee Mall",
+                description: "Đơn hàng Shopee Mall từ 1.5 triệu",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "30/04/2025",
+                minOrder: "1.5 triệu"
+            },
+            {
+                code: "BRANDSP88K",
+                title: "Giảm 88K Thương hiệu",
+                description: "Áp dụng cho các thương hiệu chính hãng",
+                category: "discount",
+                type: "Giảm giá",
+                validUntil: "10/04/2025",
+                minOrder: "400K"
+            },
+            
+            // Cashback vouchers
+            {
+                code: "ELMTCB10",
+                title: "Hoàn 10% xu",
+                description: "Áp dụng cho đơn hàng Shopee Mall",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "15/04/2025",
+                minOrder: "500K"
+            },
+            {
+                code: "SPPCOINELM",
+                title: "Hoàn 100K xu",
+                description: "Lần đầu thanh toán qua ví SPayLater",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "10/04/2025"
+            },
+            {
+                code: "SPPCOIN88",
+                title: "Hoàn 15% xu",
+                description: "Tối đa 70K, đơn tối thiểu 300K",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "30/04/2025",
+                minOrder: "300K"
             },
             {
                 code: "SPPCOIN25K",
@@ -694,6 +796,61 @@
                 type: "Hoàn xu",
                 validUntil: "30/04/2025",
                 minOrder: "150K"
+            },
+            {
+                code: "TAINAPXU",
+                title: "Hoàn 20K xu khi tải app",
+                description: "Dành cho người dùng mới tải app",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "30/04/2025"
+            },
+            {
+                code: "HOANHUNG",
+                title: "Hoàn 100K xu",
+                description: "Cho người dùng VIP",
+                category: "cashback",
+                type: "Hoàn xu",
+                validUntil: "30/04/2025",
+                minOrder: "1 triệu"
+            },
+            
+            // Other vouchers
+            {
+                code: "NEWSHOPEE",
+                title: "Combo khuyến mãi",
+                description: "Miễn phí vận chuyển + Giảm 20K + Hoàn 10K xu",
+                category: "other",
+                type: "Combo",
+                validUntil: "15/04/2025",
+                minOrder: "200K"
+            },
+            {
+                code: "DOISOAT88",
+                title: "Combo Shopee Mall",
+                description: "Đồng kiểm + Hoàn xu 10%",
+                category: "other",
+                type: "Đồng kiểm",
+                validUntil: "30/04/2025",
+                minOrder: "500K"
+            },
+            {
+                code: "HBSP0425",
+                title: "Quà tặng",
+                description: "Tặng thêm quà cho đơn từ thương hiệu cao cấp",
+                category: "other",
+                type: "Quà tặng",
+                validUntil: "30/04/2025",
+                minOrder: "1 triệu"
+            },
+            {
+                code: "SPPMKTPLACE",
+                title: "Combo ưu đãi",
+                description: "Freeship + Hoàn xu",
+                category: "other",
+                type: "Combo",
+                validUntil: "30/04/2025",
+                minOrder: "0Đ"
             }
         ];
 
@@ -759,8 +916,9 @@
                 vouchersContainer.appendChild(voucherCard);
             });
             
-            // Set up copy buttons
+            // Set up buttons
             setupCopyButtons();
+            setupUseNowButtons();
         }
 
         function createVoucherCard(voucher) {
@@ -777,7 +935,10 @@
                     ${voucher.code ? `
                     <div class="copy-code">
                         <div class="code">${voucher.code}</div>
+                    </div>
+                    <div class="button-container">
                         <button class="copy-btn" data-code="${voucher.code}">Copy</button>
+                        <button class="use-now-btn" data-code="${voucher.code}">Dùng Ngay</button>
                     </div>
                     ` : ''}
                     
@@ -799,6 +960,7 @@
                         .then(() => {
                             // Show success message
                             const successMessage = document.getElementById('success-message');
+                            successMessage.textContent = 'Đã copy mã voucher!';
                             successMessage.style.animation = 'none';
                             successMessage.offsetHeight; // Trigger reflow
                             successMessage.style.animation = 'fadeInOut 2s forwards';
@@ -814,6 +976,27 @@
                             console.error('Failed to copy code:', err);
                             alert(`Không thể copy mã: ${code}\nVui lòng copy thủ công.`);
                         });
+                });
+            });
+        }
+        
+        function setupUseNowButtons() {
+            document.querySelectorAll('.use-now-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const code = this.getAttribute('data-code');
+                    
+                    // Show success message
+                    const successMessage = document.getElementById('success-message');
+                    successMessage.textContent = 'Đang chuyển đến Shopee...';
+                    successMessage.style.animation = 'none';
+                    successMessage.offsetHeight; // Trigger reflow
+                    successMessage.style.animation = 'fadeInOut 2s forwards';
+                    
+                    // Redirect to Shopee with the voucher code
+                    setTimeout(() => {
+                        const shopeeUrl = `https://shopee.vn/search?promotionId=${code}`;
+                        window.open(shopeeUrl, '_blank');
+                    }, 500);
                 });
             });
         }
