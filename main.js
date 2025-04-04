@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 async function initApp() {
     try {
+        // Hiển thị loading
+        const loadingElement = document.getElementById('loading');
+        loadingElement.style.display = 'flex';
+        
         // Fetch voucher data
         const vouchers = await fetchVouchers();
         
