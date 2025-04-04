@@ -2,13 +2,19 @@
 
 Một trang web đơn giản hiển thị voucher Shopee từ Google Docs một cách tối ưu và trực quan.
 
+![Screenshot](https://via.placeholder.com/800x400?text=Shopee+Vouchers+Screenshot)
+
 ## Tính năng
 
-- Lấy dữ liệu voucher từ file Google Docs
-- Hiển thị các voucher trong giao diện sạch sẽ, dễ nhìn
-- Cho phép tìm kiếm và lọc voucher
-- Thiết kế responsive cho cả điện thoại và máy tính
+- ✨ Thiết kế hiện đại và hấp dẫn
+- 📱 Responsive cho mọi thiết bị
+- 🔄 Tự động cập nhật voucher từ Google Docs
+- 🔍 Tìm kiếm và lọc voucher nhanh chóng
+- 📋 Sao chép mã voucher với một cú nhấp chuột
+- 🌗 Hỗ trợ Dark mode
 
 ## Cài đặt
 
 1. Clone repository này:
+   ```bash
+   git clone https://github.com/diepvantien/shopee-voucher-display.git
