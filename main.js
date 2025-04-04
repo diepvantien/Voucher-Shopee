@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize the application
     initApp();
+    
+    // Set current date on footer
+    const today = new Date();
+    document.getElementById('last-updated').textContent = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
 });
 
 async function initApp() {
@@ -8,23 +12,29 @@ async function initApp() {
         // Fetch voucher data
         const vouchers = await fetchVouchers();
         
+        // Save vouchers for filtering
+        window.allVouchers = vouchers;
+        
         // Display vouchers
         displayVouchers(vouchers);
         
         // Set up search and filtering
-        setupSearchAndFilter(vouchers);
+        setupSearchAndFilter();
+        
+        // Set up filter tabs
+        setupFilterTabs();
     } catch (error) {
         console.error('Error initializing app:', error);
-        document.getElementById('loading').innerHTML = `
-            <p>Error loading vouchers. Please try again later.</p>
-            <p>Error: ${error.message}</p>
-        `;
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('status-message').textContent = `Lỗi tải mã voucher: ${error.message}`;
+        document.getElementById('status-message').style.display = 'block';
     }
 }
 
 function displayVouchers(vouchers) {
     const vouchersContainer = document.getElementById('vouchers');
     const loadingElement = document.getElementById('loading');
+    const statusElement = document.getElementById('status-message');
     
     // Hide loading indicator
     loadingElement.style.display = 'none';
@@ -33,8 +43,11 @@ function displayVouchers(vouchers) {
     vouchersContainer.innerHTML = '';
     
     if (vouchers.length === 0) {
-        vouchersContainer.innerHTML = '<p>Không tìm thấy voucher nào.</p>';
+        statusElement.textContent = 'Không tìm thấy voucher nào phù hợp.';
+        statusElement.style.display = 'block';
         return;
+    } else {
+        statusElement.style.display = 'none';
     }
     
     // Create and append voucher cards
@@ -55,8 +68,8 @@ function createVoucherCard(voucher) {
     card.innerHTML = `
         <div class="voucher-header">${voucher.type || 'Voucher'}</div>
         <div class="voucher-body">
-            <h2 class="voucher-title">${voucher.title}</h2>
-            <p class="voucher-description">${voucher.description || 'Không có mô tả'}</p>
+            <h2 class="voucher-title">${escapeHTML(voucher.title)}</h2>
+            ${voucher.description ? `<p class="voucher-description">${escapeHTML(voucher.description)}</p>` : ''}
             
             ${voucher.code ? `
             <div class="copy-code">
@@ -66,7 +79,7 @@ function createVoucherCard(voucher) {
             ` : ''}
             
             <div class="voucher-meta">
-                ${voucher.validUntil ? `<span>Hết hạn: ${voucher.validUntil}</span>` : ''}
+                ${voucher.validUntil ? `<span>Hết hạn: ${voucher.validUntil}</span>` : '<span>Không thời hạn</span>'}
                 ${voucher.minOrder ? `<span>Đơn tối thiểu: ${voucher.minOrder}</span>` : ''}
             </div>
         </div>
@@ -81,6 +94,12 @@ function setupCopyButtons() {
             const code = this.getAttribute('data-code');
             navigator.clipboard.writeText(code)
                 .then(() => {
+                    // Show success message
+                    const successMessage = document.getElementById('success-message');
+                    successMessage.style.animation = 'none';
+                    successMessage.offsetHeight; // Trigger reflow
+                    successMessage.style.animation = 'fadeInOut 2s forwards';
+                    
                     // Change button text temporarily
                     const originalText = this.textContent;
                     this.textContent = 'Đã copy!';
@@ -90,25 +109,25 @@ function setupCopyButtons() {
                 })
                 .catch(err => {
                     console.error('Failed to copy code:', err);
+                    alert(`Không thể copy mã: ${code}\nVui lòng copy thủ công.`);
                 });
         });
     });
 }
 
-function setupSearchAndFilter(allVouchers) {
+function setupSearchAndFilter() {
     const searchInput = document.getElementById('search');
-    const filterSelect = document.getElementById('filter');
     
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        const filterValue = filterSelect.value;
+        const activeCategory = document.querySelector('.filter-tab.active').getAttribute('data-category');
         
-        let filteredVouchers = allVouchers;
+        let filteredVouchers = window.allVouchers;
         
         // Apply category filter
-        if (filterValue !== 'all') {
+        if (activeCategory !== 'all') {
             filteredVouchers = filteredVouchers.filter(voucher => 
-                voucher.category && voucher.category.toLowerCase() === filterValue
+                voucher.category && voucher.category === activeCategory
             );
         }
         
@@ -125,5 +144,38 @@ function setupSearchAndFilter(allVouchers) {
     }
     
     searchInput.addEventListener('input', applyFilters);
-    filterSelect.addEventListener('change', applyFilters);
+}
+
+function setupFilterTabs() {
+    const tabs = document.querySelectorAll('.filter-tab');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Apply filters
+            const searchInput = document.getElementById('search');
+            const event = new Event('input', { bubbles: true });
+            searchInput.dispatchEvent(event);
+        });
+    });
+}
+
+// Helper function to escape HTML to prevent XSS
+function escapeHTML(str) {
+    if (!str) return '';
+    
+    return str.replace(/[&<>"']/g, function(match) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[match];
+    });
 }
